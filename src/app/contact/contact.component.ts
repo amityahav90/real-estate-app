@@ -8,6 +8,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
   contactForm: FormGroup;
+  latitude = 51.678418;
+  longtitude = 7.809007;
+  locationChosen = false;
 
   ngOnInit() {
     this.contactForm = new FormGroup({
@@ -21,5 +24,11 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     console.log(this.contactForm);
     // this.contactForm.reset();
+  }
+
+  onChosedLocation(event) {
+    this.latitude = event.coords.lat;
+    this.longtitude = event.coords.lng;
+    this.locationChosen = true;
   }
 }

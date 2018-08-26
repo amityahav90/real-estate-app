@@ -36,3 +36,27 @@ span {
   color: red;
 }
 
+#map {
+  display: block;
+  margin-bottom: 60px;
+  margin-right: 500px;
+}
+
+#col1 {
+  display: block;
+  position: center;
+  padding-right: 250px;
+}
+
+agm-map {
+  height: 500px;
+  /*width: 1300px;*/
+}
+
+#information, #openingHours {
+  text-align: right;
+}
+
+
+
+

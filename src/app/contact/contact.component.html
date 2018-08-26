@@ -4,9 +4,23 @@
 <hr>
 
 <div class="row">
-  <div class="column">
-    <h2>Col 1</h2>
+  <div id="col1" class="column">
+    <div class="container">
+      <ul id="information" class="list-unstyled">
+        <li>מרכז רזין, 115/2, אילת</li>
+        <li>טלפון: 08-6379989 <i class="fa fa-phone" aria-hidden="true"></i></li>
+        <li>פקס: 08-6379999 <i class="fa fa-fax" aria-hidden="true"></i></li>
+        <li> example@gmail.com :אימייל <i class="fa fa-envelope-o" aria-hidden="true"></i></li>
+      </ul>
+      <ul id="openingHours" class="list-unstyled">
+        <p>:שעות פתיחה <i class="fa fa-clock-o" aria-hidden="true"></i></p>
+        <li>ראשון-חמישי: 09:00-19:00</li>
+        <li>שישי: 09:00-12:30</li>
+        <li>שבת: סגור</li>
+      </ul>
+    </div>
   </div>
+
   <div class="column">
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -74,3 +88,19 @@
     </form>
   </div>
 </div>
+
+<hr>
+
+<div id="map" class="container">
+  <agm-map
+    [latitude]="latitude"
+    [longitude]="longtitude"
+    (mapClick)="onChosedLocation($event)">
+    <agm-marker
+      [latitude]="latitude"
+      [longitude]="longtitude"
+      *ngIf="locationChosen">
+    </agm-marker>
+  </agm-map>
+</div>
+
