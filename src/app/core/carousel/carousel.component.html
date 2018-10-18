@@ -1,0 +1,8 @@
+<mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'">
+  <mdb-carousel-item *ngFor="let photo of asset.photos">
+    <div class="view w-100">
+      <img class="d-block w-100" [src]="photo">
+      <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>

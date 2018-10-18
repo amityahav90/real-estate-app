@@ -7,21 +7,9 @@
       <nav class="st-navbar-desktop-menu" role="navigation">
         <ul id="st-navbar-desktop-menu-nav" class="sf-menu">
           <li><a routerLink="contact">צור קשר</a></li>
-          <li><a href="#">אודותינו</a></li>
-          <li class="dropdown-right"><a href="#">השכרה</a>
-            <ul>
-              <li><a href="#">Página uno</a></li>
-              <li><a href="#">Página dos</a>
-                <ul>
-                  <li><a href="#">Página dos uno</a></li>
-                  <li><a href="#">Página dos dos</a></li>
-                  <li><a href="#">Página dos tres</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Página tres</a></li>
-            </ul>
-          </li>
-          <li><a routerLink="sale">מכירה</a></li>
+          <li><a routerLink="/">אודותינו</a></li>
+          <li><a [routerLink]="['/assets/rent']" routerLinkActive>השכרה</a></li>
+          <li><a [routerLink]="['/assets/sale']" routerLinkActive>מכירה</a></li>
         </ul>
       </nav>
     </div>

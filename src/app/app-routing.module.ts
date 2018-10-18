@@ -1,17 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ForSaleComponent } from './asset/for-sale/for-sale.component';
 import {ContactComponent} from './contact/contact.component';
+import {AssetListComponent} from './assets/asset-list/asset-list.component';
+import {LoginComponent} from './auth/login/login.component';
+import {SignupComponent} from './auth/signup/signup.component';
+import {CreateAssetComponent} from './assets/create-asset/create-asset.component';
+import {AssetDetailComponent} from './assets/asset-detail/asset-detail.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'sale', component: ForSaleComponent },
+  { path: 'assets/create', component: CreateAssetComponent },
+  { path: 'assets/detail/:id', component: AssetDetailComponent },
+  { path: 'assets/:type', component: AssetListComponent, runGuardsAndResolvers: 'paramsChange' },
   { path: 'contact', component: ContactComponent },
+  { path: 'auth/login', component: LoginComponent },
+  { path: 'auth/signup', component: SignupComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

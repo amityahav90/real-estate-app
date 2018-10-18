@@ -1,0 +1,47 @@
+.container {
+  max-width: 50%;
+}
+
+mat-form-field {
+  width: 100%;
+  text-align: right;
+}
+
+mat-form-field-infix {
+  margin-right: -17px;
+}
+
+.signup-btn {
+  margin-top: 35px;
+  text-align: center;
+}
+
+.add-photo-label {
+  margin-right: 0.5rem;
+}
+
+.add-photo {
+  text-align: right;
+  margin-bottom: 0.5rem;
+}
+
+.signup-btn {
+  margin-top: 3rem;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  height: 100%;
+  width: 25%;
+  float: right;
+}
+
+

@@ -1,0 +1,19 @@
+/*.row {*/
+  /*margin: 1rem;*/
+/*}*/
+.column {
+  float: left;
+  /*padding: 20px;*/
+}
+
+.left {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+  align-content: space-between;
+}
+
+.right {
+  width: 20%;
+}

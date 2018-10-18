@@ -1,0 +1,16 @@
+.container {
+  max-width: 50%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.signup-btn {
+  margin-top: 35px;
+  text-align: center;
+}

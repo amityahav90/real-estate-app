@@ -1,38 +1,59 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ForSaleComponent } from './asset/for-sale/for-sale.component';
-import { ForRentComponent } from './asset/for-rent/for-rent.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AgmCoreModule } from '@agm/core';
 
-import { AssetService } from './asset/asset.service';
-import { AssetItemComponent } from './asset/asset-item/asset-item.component';
+import { AssetService } from './assets/asset.service';
+import { AssetItemComponent } from './assets/asset-list/asset-item/asset-item.component';
 import { ContactComponent } from './contact/contact.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AssetListComponent } from './assets/asset-list/asset-list.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AngularMaterialModule} from './angular-material.module';
+import { FilterComponent } from './core/filter/filter.component';
+import { LoginComponent } from './auth/login/login.component';
+import {HttpClientModule} from '@angular/common/http';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { CreateAssetComponent } from './assets/create-asset/create-asset.component';
+import { AssetDetailComponent } from './assets/asset-detail/asset-detail.component';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import { CarouselComponent } from './core/carousel/carousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ForSaleComponent,
-    ForRentComponent,
     AssetItemComponent,
-    ContactComponent
+    ContactComponent,
+    AssetListComponent,
+    FilterComponent,
+    LoginComponent,
+    SignupComponent,
+    AdminPageComponent,
+    CreateAssetComponent,
+    AssetDetailComponent,
+    CarouselComponent
 
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    AngularMaterialModule,
     ReactiveFormsModule,
     AngularFontAwesomeModule,
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDTeyQ24rK9mGlPyUL0tU-C97l_nyVysiw'
-    })
+    }),
+    MDBBootstrapModule.forRoot()
   ],
   providers: [AssetService],
   bootstrap: [AppComponent]

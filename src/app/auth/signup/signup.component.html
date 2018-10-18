@@ -1,0 +1,46 @@
+<div class="container">
+  <mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form [formGroup]="signupForm" (ngSubmit)="onSignup()" *ngIf="!isLoading">
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="username"
+          formControlName="username"
+          placeholder="Username">
+        <mat-error *ngIf="signupForm.get('username').invalid">Please enter a valid username.</mat-error>
+      </mat-form-field>
+
+      <div formGroupName="userPassword">
+        <mat-form-field>
+          <input
+            matInput
+            type="password"
+            name="password"
+            formControlName="password"
+            placeholder="Password">
+          <mat-error *ngIf="signupForm.get('userPassword.password').invalid">Please enter a valid password.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            type="password"
+            name="confirmPassword"
+            formControlName="confirmPassword"
+            placeholder="Confirm Password">
+          <mat-error *ngIf="signupForm.get('userPassword.confirmPassword').invalid">Please enter a valid password.</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="signup-btn">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          *ngIf="!isLoading">
+          Signup
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>
