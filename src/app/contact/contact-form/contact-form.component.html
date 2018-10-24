@@ -1,0 +1,79 @@
+<div class="container">
+  <mat-card style="width: 80%;">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">
+      <h3>השאר פרטים</h3>
+
+      <!-- Name -->
+      <mat-form-field>
+        <input
+          dir="rtl"
+          matInput
+          type="text"
+          name="name"
+          formControlName="name"
+          placeholder="שם מלא">
+      </mat-form-field>
+
+      <!-- Phone -->
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="phone"
+          formControlName="phone"
+          placeholder="מספר טלפון">
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field>
+        <input
+          dir="ltr"
+          matInput
+          type="email"
+          name="email"
+          formControlName="email"
+          placeholder="אימייל">
+      </mat-form-field>
+
+      <!-- Message -->
+      <mat-form-field>
+        <textarea
+          matInput
+          name="message"
+          formControlName="message"
+          rows="6"
+          placeholder="פרטים נוספים">
+        </textarea>
+      </mat-form-field>
+
+      <!-- Send button -->
+      <div class="send-btn">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="disabledSubmitButton">
+          שלח
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>
+
+<!--Success modal-->
+<div mdbModal #successModal="mdbModal" class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="text-align: right;" class="modal-title w-100" id="successModalLabel">תודה {{ contactForm.value.name }}</h4>
+      </div>
+      <div style="text-align: right; direction: rtl;" class="modal-body">
+        פנייתך התקבלה בהצלחה ואנו ניצור עימך קשר בהקדם האפשרי.
+      </div>
+      <div class="modal-footer" style="justify-content: center !important;">
+        <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="successModal.hide()" mdbWavesEffect>סגור</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End of success modal-->

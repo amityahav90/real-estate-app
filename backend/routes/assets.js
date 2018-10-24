@@ -13,5 +13,7 @@ router.get("", AssetsController.getAssetsByType);
 
 router.get("/:id", AssetsController.getAssetById);
 
+router.delete("/:id", AssetsController.deleteAsset);
+
 module.exports = router;
 

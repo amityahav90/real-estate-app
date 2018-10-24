@@ -4,6 +4,7 @@
 
 mat-form-field {
   width: 100%;
+  text-align: right;
 }
 
 mat-spinner {
@@ -13,4 +14,8 @@ mat-spinner {
 .signup-btn {
   margin-top: 35px;
   text-align: center;
+}
+
+mat-error {
+  direction: rtl;
 }

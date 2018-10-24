@@ -4,8 +4,18 @@ export interface Asset {
   address: string;
   price: number;
   description: string;
-  isPrivate: boolean; // Private means not a building //
+  category: string; // cottage, penthouse, villa... //
   roomsAmount: number;
   size: number;
   photos: File[];
+  neighborhood: string;
+  totalFloors: number;
+  assetFloor: number;
+  entranceDate: Date;
+  isAirCondition: boolean;
+  isElevator: boolean;
+  isBalcony: boolean;
+  isParking: boolean;
+  isShield: boolean;
+  isStroeroom: boolean;
 }

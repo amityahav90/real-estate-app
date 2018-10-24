@@ -5,6 +5,7 @@ import { Asset } from './asset.model';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/internal/operators';
+import {FormGroup} from '@angular/forms';
 
 const BACKEND_URL = environment.apiUrl + '/assets';
 
@@ -24,27 +25,31 @@ export class AssetService {
     return this.assets[index];
   }
 
-  createAsset(type: string,
-              address: string,
-              price: number,
-              description: string,
-              isPrivate: boolean,
-              roomsAmount: number,
-              size: number,
-              photos: File[]) {
+  createAsset(form: FormGroup,  photos: File[]) {
     const assetData = new FormData();
-    assetData.append('type', type);
-    assetData.append('address', address);
-    assetData.append('price', price.toString());
-    assetData.append('description', description);
-    assetData.append('isPrivate', isPrivate.toString());
-    assetData.append('roomsAmount', roomsAmount.toString());
-    assetData.append('size', size.toString());
+    assetData.append('type', form.value.type);
+    assetData.append('address', form.value.address);
+    assetData.append('neighborhood', form.value.neighborhood);
+    assetData.append('price', form.value.price.toString());
+    assetData.append('description', form.value.description);
+    assetData.append('category', form.value.category);
+    assetData.append('roomsAmount', form.value.roomsAmount.toString());
+    assetData.append('size', form.value.size.toString());
     assetData.append('photosAmount', photos.length.toString());
+    assetData.append('isAirCondition', (!!(form.value.details.isAirCondition)).toString());
+    assetData.append('isBalcony', (!!(form.value.details.isBalcony)).toString());
+    assetData.append('isElevator', (!!(form.value.details.isElevator)).toString());
+    assetData.append('isParking', (!!(form.value.details.isParking)).toString());
+    assetData.append('isShield', (!!(form.value.details.isShield)).toString());
+    assetData.append('isStroeroom', (!!(form.value.details.isStroeroom)).toString());
+    assetData.append('entranceDate', form.value.entranceDate);
+    assetData.append('assetFloor', (form.value.assetFloor) ? form.value.assetFloor : 0);
+    assetData.append('totalFloors', (form.value.totalFloors) ? form.value.totalFloors : 0);
 
     for (let i = 0; i < photos.length; i++) {
       assetData.append('photos[]', photos[i], photos[i].name);
     }
+
     this.http.post(BACKEND_URL, assetData)
       .subscribe(result => {
         console.log(result);
@@ -63,10 +68,20 @@ export class AssetService {
               address: asset.address,
               price: asset.price,
               description: asset.description,
-              isPrivate: asset.isPrivate,
+              category: asset.category,
               roomsAmount: asset.roomsAmount,
               size: asset.size,
-              photos: asset.photos
+              photos: asset.photos,
+              neighborhood: asset.neighborhood,
+              totalFloors: asset.totalFloors,
+              assetFloor: asset.assetFloor,
+              entranceDate: asset.entranceDate,
+              isAirCondition: asset.isAirCondition,
+              isElevator: asset.isElevator,
+              isBalcony: asset.isBalcony,
+              isParking: asset.isParking,
+              isShield: asset.isShield,
+              isStroeroom: asset.isStroeroom
             };
           })
         };
@@ -83,5 +98,9 @@ export class AssetService {
 
   getAssetsUpdatedListener() {
     return this.assetsUpdated.asObservable();
+  }
+
+  deleteAsset(assetId: string) {
+    return this.http.delete<{message: string, status: number}>(BACKEND_URL + '/' + assetId);
   }
 }

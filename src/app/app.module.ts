@@ -24,6 +24,11 @@ import { CreateAssetComponent } from './assets/create-asset/create-asset.compone
 import { AssetDetailComponent } from './assets/asset-detail/asset-detail.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import { CarouselComponent } from './core/carousel/carousel.component';
+import {ShortDatePipe} from './core/pipes/short-date.pipe';
+import { ContactFormComponent } from './contact/contact-form/contact-form.component';
+import {AdminRoutingModule} from './admin-page/admin-routing.module';
+import { AssetsTableComponent } from './core/assets-table/assets-table.component';
+import {HebrewPipe} from './core/pipes/hebrew.pipe';
 
 @NgModule({
   declarations: [
@@ -38,14 +43,18 @@ import { CarouselComponent } from './core/carousel/carousel.component';
     AdminPageComponent,
     CreateAssetComponent,
     AssetDetailComponent,
-    CarouselComponent
-
+    CarouselComponent,
+    ShortDatePipe,
+    ContactFormComponent,
+    AssetsTableComponent,
+    HebrewPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    AdminRoutingModule,
     AngularMaterialModule,
     ReactiveFormsModule,
     AngularFontAwesomeModule,

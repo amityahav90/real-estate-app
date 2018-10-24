@@ -1,3 +1,103 @@
-<p>
-  admin-page works!
-</p>
+<div class="wrapper">
+  <nav id="sidebar">
+    <ul class="list-unstyled components">
+      <li class="active">
+        <a
+          routerLink="assets"
+          data-toggle="collapse"
+          aria-expanded="false"
+          class="dropdown-toggle">
+          נכסים
+        </a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li>
+            <a href="#"></a>
+          </li>
+          <li>
+            <a href="#">Home 2</a>
+          </li>
+          <li>
+            <a href="#">Home 3</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">About</a>
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li>
+            <a href="#">Page 1</a>
+          </li>
+          <li>
+            <a href="#">Page 2</a>
+          </li>
+          <li>
+            <a href="#">Page 3</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Portfolio</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+
+    <ul class="list-unstyled CTAs">
+      <li>
+        <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+      </li>
+      <li>
+        <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Page Content Holder -->
+  <div id="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<mat-toolbar color="primary">-->
+<!--<button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>-->
+<!--</mat-toolbar>-->
+
+<!--<div fxLayout="row">-->
+<!--<mat-drawer-container>-->
+<!--<mat-drawer #snav [mode]="'side'">-->
+<!--<mat-nav-list>-->
+<!--<a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>-->
+<!--</mat-nav-list>-->
+<!--</mat-drawer>-->
+
+<!--<mat-drawer-content>-->
+<!--<p *ngFor="let content of fillerContent">{{content}}</p>-->
+<!--</mat-drawer-content>-->
+<!--</mat-drawer-container>-->
+<!--</div>-->
+
+

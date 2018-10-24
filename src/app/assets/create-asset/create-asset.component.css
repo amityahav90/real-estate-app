@@ -44,4 +44,18 @@ input[type="file"] {
   float: right;
 }
 
+.details {
+  text-align: right;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+mat-checkbox {
+  margin-left: 1rem;
+}
+
+.floor {
+  display: flex;
+}
+
 

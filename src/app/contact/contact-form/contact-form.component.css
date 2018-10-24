@@ -1,0 +1,20 @@
+input, textarea {
+  direction: rtl;
+}
+
+mat-form-field {
+  width: 100%;
+  text-align: right;
+}
+
+.container {
+  max-width: 100%;
+}
+
+.send-btn {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}

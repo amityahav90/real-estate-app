@@ -12,11 +12,6 @@ export interface Type {
   showValue: string;
 }
 
-export interface Private {
-  value: boolean;
-  showValue: string;
-}
-
 @Component({
   selector: 'app-create-asset',
   templateUrl: './create-asset.component.html',
@@ -27,10 +22,7 @@ export class CreateAssetComponent implements OnInit {
     { value: 'sale', showValue: 'למכירה' },
     { value: 'rent', showValue: 'להשכרה' }
   ];
-  isPrivate: Private[] = [
-    { value: true, showValue: 'בית פרטי' },
-    { value: false, showValue: 'בית משותף' }
-  ];
+  categories: string[] = ['דירה', 'פנטהאוז', 'קוטג\'', 'וילה', 'יחידת דיור', 'דירת גן', 'דופלקס'];
   form: FormGroup;
   isAuthenticated = false;
   imagePreview: string[] = [];
@@ -55,11 +47,15 @@ export class CreateAssetComponent implements OnInit {
         null,
         {validators: [Validators.required]}
       ),
+      'neighborhood': new FormControl(
+        null,
+        {validators: [Validators.required]}
+      ),
       'price': new FormControl(
         null,
         {validators: [Validators.required, Validators.min(0)]}
       ),
-      'private': new FormControl(
+      'category': new FormControl(
         null,
         {validators: [Validators.required]}
       ),
@@ -74,7 +70,18 @@ export class CreateAssetComponent implements OnInit {
       'description': new FormControl(
         null,
         {validators: [Validators.required]}
-      )
+      ),
+      'details': new FormGroup({
+        'isAirCondition': new FormControl(null),
+        'isElevator': new FormControl(null),
+        'isBalcony': new FormControl(null),
+        'isParking': new FormControl(null),
+        'isShield': new FormControl(null),
+        'isStroeroom': new FormControl(null)
+      }),
+      'entranceDate': new FormControl(null),
+      'assetFloor': new FormControl(null),
+      'totalFloors': new FormControl(null)
     });
   }
 
@@ -126,14 +133,6 @@ export class CreateAssetComponent implements OnInit {
       photos.push(this.form.value.img4);
     }
 
-    this.assetService.createAsset(
-      this.form.value.type,
-      this.form.value.address,
-      this.form.value.price,
-      this.form.value.description,
-      this.form.value.private,
-      this.form.value.roomsAmount,
-      this.form.value.size,
-      photos);
+    this.assetService.createAsset(this.form, photos);
   }
 }

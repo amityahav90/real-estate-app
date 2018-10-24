@@ -8,8 +8,8 @@
           type="text"
           name="username"
           formControlName="username"
-          placeholder="Username">
-        <mat-error *ngIf="signupForm.get('username').invalid">Please enter a valid username.</mat-error>
+          placeholder="שם משתמש">
+        <mat-error *ngIf="signupForm.get('username').invalid">אנא הכנס שם משתמש חוקי.</mat-error>
       </mat-form-field>
 
       <div formGroupName="userPassword">
@@ -19,8 +19,8 @@
             type="password"
             name="password"
             formControlName="password"
-            placeholder="Password">
-          <mat-error *ngIf="signupForm.get('userPassword.password').invalid">Please enter a valid password.</mat-error>
+            placeholder="סיסמה">
+          <mat-error *ngIf="signupForm.get('userPassword.password').invalid">אנא הכנס סיסמה חוקית.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input
@@ -28,8 +28,8 @@
             type="password"
             name="confirmPassword"
             formControlName="confirmPassword"
-            placeholder="Confirm Password">
-          <mat-error *ngIf="signupForm.get('userPassword.confirmPassword').invalid">Please enter a valid password.</mat-error>
+            placeholder="אשר סיסמה">
+          <mat-error *ngIf="signupForm.get('userPassword.confirmPassword').invalid">אנא הכנס סיסמה חוקית.</mat-error>
         </mat-form-field>
       </div>
       <div class="signup-btn">
@@ -38,7 +38,7 @@
           color="primary"
           type="submit"
           *ngIf="!isLoading">
-          Signup
+          שלח
         </button>
       </div>
     </form>

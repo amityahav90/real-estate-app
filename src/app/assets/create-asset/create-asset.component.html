@@ -5,7 +5,7 @@
       <mat-form-field>
         <mat-select
           dir="rtl"
-          placeholder="סוג הנכס"
+          placeholder="מכירה/השכרה"
           name="type"
           formControlName="type">
           <mat-option
@@ -30,6 +30,16 @@
         <input
           dir="rtl"
           matInput
+          type="text"
+          name="neighborhood"
+          placeholder="שכונה"
+          formControlName="neighborhood">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          dir="rtl"
+          matInput
           type="number"
           name="price"
           placeholder="מחיר"
@@ -39,16 +49,37 @@
       <mat-form-field>
         <mat-select
           dir="rtl"
-          placeholder="בית פרטי/משותף"
-          name="private"
-          formControlName="private">
+          placeholder="קטגוריה"
+          name="category"
+          formControlName="category">
           <mat-option
-            *ngFor="let private of isPrivate"
-            [value]="private.value">
-            {{ private.showValue }}
+            *ngFor="let category of categories"
+            [value]="category">
+            {{ category }}
           </mat-option>
         </mat-select>
       </mat-form-field>
+
+      <div class="floor">
+        <mat-form-field>
+          <input
+            dir="rtl"
+            matInput
+            type="number"
+            name="totalFloors"
+            placeholder="מתוך"
+            formControlName="totalFloors">
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            dir="rtl"
+            matInput
+            type="number"
+            name="assetFloor"
+            placeholder="קומה"
+            formControlName="assetFloor">
+        </mat-form-field>
+      </div>
 
       <mat-form-field>
         <input
@@ -81,6 +112,27 @@
           rows="6">
         </textarea>
       </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="תאריך כניסה"
+          name="entranceDate"
+          formControlName="entranceDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <!--<mat-error *ngIf="signupForm.get('picker').touched && signupForm.get('picker').invalid">Please enter a valid date.</mat-error>-->
+      </mat-form-field>
+
+      <div formGroupName="details" class="details">
+        <mat-checkbox dir="rtl" formControlName="isAirCondition">מיזוג</mat-checkbox>
+        <mat-checkbox dir="rtl" formControlName="isElevator">מעלית</mat-checkbox>
+        <mat-checkbox dir="rtl" formControlName="isBalcony">מרפסת</mat-checkbox>
+        <mat-checkbox dir="rtl" formControlName="isParking">חניה</mat-checkbox>
+        <mat-checkbox dir="rtl" formControlName="isShield">ממ"ד</mat-checkbox>
+        <mat-checkbox dir="rtl" formControlName="isStroeroom">מחסן</mat-checkbox>
+      </div>
 
       <!--Image #1-->
       <div class="add-photo">

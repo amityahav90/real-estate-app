@@ -8,16 +8,37 @@ exports.createAsset = (req, res, next) => {
     const path = url + '/images/' + req.files[i]['filename'];
     photos.push(path);
   }
+
+  let totalFloors = req.body.totalFloors;
+  let assetFloor = req.body.assetFloor;
+  if (totalFloors === null) {
+    totalFloors = 0;
+  }
+  if (assetFloor === null) {
+    assetFloor = 0;
+  }
+
   const asset = new Asset({
     type: req.body.type,
     address: req.body.address,
     price: req.body.price,
     description: req.body.description,
-    isPrivate: req.body.isPrivate,
+    category: req.body.category,
     roomsAmount: req.body.roomsAmount,
     size: req.body.size,
-    photos: photos
+    photos: photos,
+    neighborhood: req.body.neighborhood,
+    totalFloors: totalFloors,
+    assetFloor: assetFloor,
+    entranceDate: req.body.entranceDate,
+    isAirCondition: req.body.isAirCondition,
+    isElevator: req.body.isElevator,
+    isBalcony: req.body.isBalcony,
+    isParking: req.body.isParking,
+    isShield: req.body.isShield,
+    isStroeroom: req.body.isStroeroom
   });
+  console.log(asset);
   asset.save()
     .then(savedAsset => {
       if (savedAsset) {
@@ -79,6 +100,30 @@ exports.getAssetById = (req, res, next) => {
       res.status(500).json({
         message: 'Unknown error occurred.',
         error: error
+      });
+    });
+}
+
+exports.deleteAsset = (req, res, next) => {
+  Asset.deleteOne({ _id: req.params.id })
+    .then(result => {
+      if (result.n > 0) {
+        res.status(200).json({
+          message: 'Asset deleted successfully.',
+          status: 200
+        });
+      } else {
+        res.status(401).jaon({
+          message: 'Failed to delete asset.',
+          status: 401
+        });
+      }
+    })
+    .catch(error => {
+      res.status(500).jaon({
+        message: 'Asset not found or unknown error occurred.',
+        error: error,
+        status: 500
       });
     });
 }

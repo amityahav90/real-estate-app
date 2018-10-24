@@ -1,5 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Alef|Assistant&subset=hebrew');
+
+.header {
+  margin-top: 2rem;
+}
+
+h2 {
+  text-shadow: 1px 1px 1px #aaa;
+  font-family: 'Assistant', sans-serif;
+}
+
+h3 {
+  line-height: 280%;
+  text-shadow: 0.5px 0.5px 0.5px #aaa;
+}
+
+.right {
+  width: 70%;
+  margin-top: 1rem;
+}
+
+.left {
+  width: 30%;
+  display: flex;
+  margin-top: 3.3rem;
+}
+
 .carousel {
   width: 70%;
   height: 35%;
   margin-left: 14%;
 }
+
+section {
+  text-align: right;
+}
+
+li {
+  direction: rtl;
+  list-style: none;
+}
+
+.right-col {
+  display: inline-block;
+  float: right;
+  width: 50%;
+}
+
+.left-col {
+  display: inline-block;
+  float: left;
+  width: 50%;
+}
+
+.fa-check {
+  color: green;
+  margin-left: 0.5rem;
+}
+
+.fa-times {
+  color: red;
+  margin-left: 0.75rem;
+}
+
+strong {
+  font-family: 'Alef', sans-serif;
+  color: #1b1e21;
+  margin-left: 0.25rem;
+}
+
+
+
