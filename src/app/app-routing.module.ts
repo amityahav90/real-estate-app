@@ -14,6 +14,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'assets/create', component: CreateAssetComponent },
   { path: 'assets/detail/:id', component: AssetDetailComponent },
+  { path: 'assets/edit/:id', component: CreateAssetComponent },
   { path: 'assets/:type', component: AssetListComponent, runGuardsAndResolvers: 'paramsChange' },
   { path: 'contact', component: ContactComponent },
   { path: 'auth/login', component: LoginComponent },

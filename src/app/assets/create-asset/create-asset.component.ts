@@ -6,6 +6,7 @@ import {mimeType} from './mime-type.validator';
 import {Asset} from '../asset.model';
 import {logging} from 'selenium-webdriver';
 import {AssetService} from '../asset.service';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 
 export interface Type {
   value: string;
@@ -25,11 +26,19 @@ export class CreateAssetComponent implements OnInit {
   categories: string[] = ['דירה', 'פנטהאוז', 'קוטג\'', 'וילה', 'יחידת דיור', 'דירת גן', 'דופלקס'];
   form: FormGroup;
   isAuthenticated = false;
-  imagePreview: string[] = [];
+  // imagePreview: string[] = [];
+  imagePreview: File[] = [];
+  editPreviewImage: File[] = [];
   photosCounter = 0;
+  asset: Asset;
   private authStatusSub: Subscription;
+  mode = 'create';
+  private assetId: string;
 
-  constructor(private authService: AuthService, private assetService: AssetService) {}
+  constructor(
+    private authService: AuthService,
+    private assetService: AssetService,
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.authStatusSub = this.authService.getAuthStatusListener()
@@ -42,7 +51,7 @@ export class CreateAssetComponent implements OnInit {
       'type': new FormControl(
         null,
         {validators: [Validators.required]}
-        ),
+      ),
       'address': new FormControl(
         null,
         {validators: [Validators.required]}
@@ -83,32 +92,67 @@ export class CreateAssetComponent implements OnInit {
       'assetFloor': new FormControl(null),
       'totalFloors': new FormControl(null)
     });
+
+    this.route.paramMap
+      .subscribe((paramMap: ParamMap) => {
+        if (paramMap.has('id')) {
+          this.mode = 'edit';
+          this.assetId = paramMap.get('id');
+          this.assetService.getAssetById(this.assetId)
+            .subscribe(assetData => {
+              this.asset = assetData.asset;
+              this.form.setValue({
+                type: this.asset.type,
+                address: this.asset.address,
+                neighborhood: this.asset.neighborhood,
+                price: this.asset.price,
+                category: this.asset.category,
+                totalFloors: this.asset.totalFloors,
+                assetFloor: this.asset.assetFloor,
+                roomsAmount: this.asset.roomsAmount,
+                size: this.asset.size,
+                description: this.asset.description,
+                entranceDate: this.asset.entranceDate,
+                details: {
+                  isAirCondition: this.asset.isAirCondition,
+                  isElevator: this.asset.isElevator,
+                  isBalcony: this.asset.isBalcony,
+                  isParking: this.asset.isParking,
+                  isShield: this.asset.isShield,
+                  isStroeroom: this.asset.isStroeroom
+                }
+              });
+              for (let i = 0; i < this.asset.photos.length; i++) {
+                const imageName = 'img' + i;
+                this.form.addControl(imageName, new FormControl(
+                  this.asset.photos[i],
+                  {validators: [Validators.required], asyncValidators: [mimeType]}
+                ));
+                this.imagePreview.push(this.asset.photos[i]);
+              }
+            });
+        } else {
+          this.mode = 'create';
+          this.assetId = null;
+        }
+      });
   }
 
-  onImagePicked(event: Event) {
+  onImagePicked(event: Event, imageName: string, num: number) {
     const file = (event.target as HTMLInputElement).files[0];
 
-    if (this.photosCounter === 0) {
-      this.form.addControl('img0', new FormControl(file, {validators: [Validators.required], asyncValidators: [mimeType]}));
-      this.form.get('img0').updateValueAndValidity();
-    } else if (this.photosCounter === 1) {
-      this.form.addControl('img1', new FormControl(file, {asyncValidators: [mimeType]}));
-      this.form.get('img1').updateValueAndValidity();
-    } else if (this.photosCounter === 2) {
-      this.form.addControl('img2', new FormControl(file, {asyncValidators: [mimeType]}));
-      this.form.get('img2').updateValueAndValidity();
-    } else if (this.photosCounter === 3) {
-      this.form.addControl('img3', new FormControl(file, {asyncValidators: [mimeType]}));
-      this.form.get('img3').updateValueAndValidity();
-    } else if (this.photosCounter === 4) {
-      this.form.addControl('img4', new FormControl(file, {asyncValidators: [mimeType]}));
-      this.form.get('img4').updateValueAndValidity();
+    if (this.form.get(imageName)) {
+      this.form.patchValue({imageName: file});
+    } else {
+      this.form.addControl(imageName, new FormControl(file, {validators: [Validators.required], asyncValidators: [mimeType]}));
+      this.form.get(imageName).updateValueAndValidity();
     }
+
     const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview[this.photosCounter++] = reader.result;
-    };
     reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.imagePreview[num] = reader.result;
+    };
   }
 
   onSubmit() {
@@ -133,6 +177,10 @@ export class CreateAssetComponent implements OnInit {
       photos.push(this.form.value.img4);
     }
 
-    this.assetService.createAsset(this.form, photos);
+    if (this.mode === 'create') {
+      this.assetService.createAsset(this.form, photos);
+    } else if (this.mode === 'edit') {
+      this.assetService.updateAsset(this.form, photos, this.assetId);
+    }
   }
 }

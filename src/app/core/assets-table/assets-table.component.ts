@@ -5,6 +5,7 @@ import {Asset} from '../../assets/asset.model';
 import {Subscription} from 'rxjs';
 import {MatTableDataSource} from '@angular/material';
 import {ModalDirective} from 'angular-bootstrap-md';
+import {Router} from '@angular/router';
 
 export interface AssetElement {
   address: string;
@@ -33,7 +34,7 @@ export class AssetsTableComponent implements OnInit, OnDestroy {
   assets: Asset[] = [];
   assetsSubscription: Subscription;
 
-  constructor(private assetService: AssetService) {}
+  constructor(private assetService: AssetService, private router: Router) {}
 
   ngOnInit() {
     this.assetService.getAssetsByType('sale');
@@ -49,7 +50,7 @@ export class AssetsTableComponent implements OnInit, OnDestroy {
   }
 
   onEdit(assetId: string) {
-    console.log(assetId);
+    this.router.navigate(['assets/edit', assetId]);
   }
 
   onDelete(assetId: string) {

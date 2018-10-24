@@ -136,95 +136,95 @@
 
       <!--Image #1-->
       <div class="add-photo">
-        <input type="file" #filePicker1 (change)="onImagePicked($event)">
+        <input type="file" #filePicker1 (change)="onImagePicked($event, 'img0', 0)">
         <label for="add-photo-btn1" class="add-photo-label">הוסף תמונה חדשה</label>
         <button
           id="add-photo-btn1"
           class="add-photo-btn"
-          color="warn"
+          color="primary"
           mat-mini-fab
           type="button"
           (click)="filePicker1.click()">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="image-preview" *ngIf="imagePreview[0] !== '' && imagePreview[0] && form.get('img0').valid">
+      <div class="image-preview" *ngIf="imagePreview[0] && form.get('img0').valid">
         <img [src]="imagePreview[0]">
+        <button class="btn btn-danger" type="button">מחק</button>
       </div>
-      <!--End of image #1-->
 
       <!--Image #2-->
       <div class="add-photo">
-        <input type="file" #filePicker2 (change)="onImagePicked($event)">
+        <input type="file" #filePicker2 (change)="onImagePicked($event, 'img1', 1)">
         <label for="add-photo-btn2" class="add-photo-label">הוסף תמונה חדשה</label>
         <button
           id="add-photo-btn2"
           class="add-photo-btn"
-          color="warn"
+          color="primary"
           mat-mini-fab
           type="button"
           (click)="filePicker2.click()">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="image-preview" *ngIf="imagePreview[1] !== '' && imagePreview[1] && form.get('img1').valid">
+      <div class="image-preview" *ngIf="imagePreview[1] && form.get('img1').valid">
         <img [src]="imagePreview[1]">
       </div>
       <!--End of image #2-->
 
       <!--Image #3-->
       <div class="add-photo">
-        <input type="file" #filePicker3 (change)="onImagePicked($event)">
+        <input type="file" #filePicker3 (change)="onImagePicked($event, 'img2', 2)">
         <label for="add-photo-btn3" class="add-photo-label">הוסף תמונה חדשה</label>
         <button
           id="add-photo-btn3"
           class="add-photo-btn"
-          color="warn"
+          color="primary"
           mat-mini-fab
           type="button"
           (click)="filePicker3.click()">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="image-preview" *ngIf="imagePreview[2] !== '' && imagePreview[2] && form.get('img2').valid">
+      <div class="image-preview" *ngIf="imagePreview[2] && form.get('img2').valid">
         <img [src]="imagePreview[2]">
       </div>
       <!--End of image #3-->
 
       <!--Image #4-->
       <div class="add-photo">
-        <input type="file" #filePicker4 (change)="onImagePicked($event)">
+        <input type="file" #filePicker4 (change)="onImagePicked($event, 'img3', 3)">
         <label for="add-photo-btn4" class="add-photo-label">הוסף תמונה חדשה</label>
         <button
           id="add-photo-btn4"
           class="add-photo-btn"
-          color="warn"
+          color="primary"
           mat-mini-fab
           type="button"
           (click)="filePicker4.click()">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="image-preview" *ngIf="imagePreview[3] !== '' && imagePreview[3] && form.get('img3').valid">
+      <div class="image-preview" *ngIf="imagePreview[3] && form.get('img3').valid">
         <img [src]="imagePreview[3]">
       </div>
       <!--End of image #4-->
 
       <!--Image #5-->
       <div class="add-photo">
-        <input type="file" #filePicker5 (change)="onImagePicked($event)">
+        <input type="file" #filePicker5 (change)="onImagePicked($event, 'img4', 4)">
         <label for="add-photo-btn5" class="add-photo-label">הוסף תמונה חדשה</label>
         <button
           id="add-photo-btn5"
           class="add-photo-btn"
-          color="warn"
+          color="primary"
           mat-mini-fab
           type="button"
           (click)="filePicker5.click()">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="image-preview" *ngIf="imagePreview[4] !== '' && imagePreview[4] && form.get('img4').valid">
+      <div class="image-preview" *ngIf="imagePreview[4] && form.get('img4').valid">
         <img [src]="imagePreview[4]">
       </div>
       <!--End of image #5-->

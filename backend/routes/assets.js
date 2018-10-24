@@ -9,6 +9,8 @@ const router = express.Router();
 
 router.post("", extractFile, AssetsController.createAsset);
 
+router.put("/:id", extractFile, AssetsController.updateAsset);
+
 router.get("", AssetsController.getAssetsByType);
 
 router.get("/:id", AssetsController.getAssetById);

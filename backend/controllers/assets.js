@@ -59,6 +59,82 @@ exports.createAsset = (req, res, next) => {
     });
 }
 
+exports.updateAsset = (req, res, next) => {
+  const url = req.protocol + '://' + req.get('host');
+  const photos = [];
+
+  for (let i = 0; i < req.body.photosAmount; i++) {
+    if (typeof (req.files[i]) === 'object') {
+      const path = url + '/images/' + req.files[i]['filename'];
+      photos.push(path);
+    }
+  }
+
+  if (req.body.unchanged0) {
+    photos.push(req.body.unchanged0);
+  }
+  if (req.body.unchanged1) {
+    photos.push(req.body.unchanged1);
+  }
+  if (req.body.unchanged2) {
+    photos.push(req.body.unchanged2);
+  }
+  if (req.body.unchanged3) {
+    photos.push(req.body.unchanged3);
+  }
+  if (req.body.unchanged4) {
+    photos.push(req.body.unchanged4);
+  }
+
+  let totalFloors = req.body.totalFloors;
+  let assetFloor = req.body.assetFloor;
+  if (totalFloors === null) {
+    totalFloors = 0;
+  }
+  if (assetFloor === null) {
+    assetFloor = 0;
+  }
+
+  const asset = new Asset({
+    _id: req.params.id,
+    type: req.body.type,
+    address: req.body.address,
+    price: req.body.price,
+    description: req.body.description,
+    category: req.body.category,
+    roomsAmount: req.body.roomsAmount,
+    size: req.body.size,
+    photos: photos,
+    neighborhood: req.body.neighborhood,
+    totalFloors: totalFloors,
+    assetFloor: assetFloor,
+    entranceDate: req.body.entranceDate,
+    isAirCondition: req.body.isAirCondition,
+    isElevator: req.body.isElevator,
+    isBalcony: req.body.isBalcony,
+    isParking: req.body.isParking,
+    isShield: req.body.isShield,
+    isStroeroom: req.body.isStroeroom
+  });
+
+  console.log(req.params.id);
+
+  Asset.updateOne({ _id: req.params.id }, asset)
+    .then(result => {
+      if (result.n > 0) {
+        res.status(200).json({message: 'Asset updated successfully'});
+      } else {
+        res.status(401).json({message: 'Fail to update asset'});
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: 'Unknown error has occurred.',
+        error: error
+      });
+    });
+}
+
 exports.getAssetsByType = (req, res, next) => {
   console.log(req.query.type);
   Asset.find({ type: req.query.type })

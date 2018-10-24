@@ -103,4 +103,41 @@ export class AssetService {
   deleteAsset(assetId: string) {
     return this.http.delete<{message: string, status: number}>(BACKEND_URL + '/' + assetId);
   }
+
+  updateAsset(form: FormGroup,  photos: File[], assetId: string) {
+    const assetData = new FormData();
+    assetData.append('type', form.value.type);
+    assetData.append('address', form.value.address);
+    assetData.append('neighborhood', form.value.neighborhood);
+    assetData.append('price', form.value.price.toString());
+    assetData.append('description', form.value.description);
+    assetData.append('category', form.value.category);
+    assetData.append('roomsAmount', form.value.roomsAmount.toString());
+    assetData.append('size', form.value.size.toString());
+    assetData.append('photosAmount', photos.length.toString());
+    assetData.append('isAirCondition', (!!(form.value.details.isAirCondition)).toString());
+    assetData.append('isBalcony', (!!(form.value.details.isBalcony)).toString());
+    assetData.append('isElevator', (!!(form.value.details.isElevator)).toString());
+    assetData.append('isParking', (!!(form.value.details.isParking)).toString());
+    assetData.append('isShield', (!!(form.value.details.isShield)).toString());
+    assetData.append('isStroeroom', (!!(form.value.details.isStroeroom)).toString());
+    assetData.append('entranceDate', form.value.entranceDate);
+    assetData.append('assetFloor', (form.value.assetFloor) ? form.value.assetFloor : 0);
+    assetData.append('totalFloors', (form.value.totalFloors) ? form.value.totalFloors : 0);
+
+    for (let i = 0; i < photos.length; i++) {
+      if (typeof (photos[i]) === 'object') {
+        assetData.append('photos[]', photos[i], photos[i].name);
+      } else {
+        // unchangedPhotos.push(photos[i]);
+        const name = 'unchanged' + i;
+        assetData.append(name, photos[i]);
+      }
+    }
+
+    this.http.put(BACKEND_URL + '/' + assetId, assetData)
+      .subscribe(result => {
+        console.log(result);
+      });
+  }
 }
