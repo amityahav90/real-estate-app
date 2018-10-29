@@ -20,9 +20,27 @@ mat-form-field-infix {
   margin-right: 0.5rem;
 }
 
+/*.add-photo {*/
+  /*text-align: right;*/
+  /*margin-bottom: 0.5rem;*/
+/*}*/
+
 .add-photo {
   text-align: right;
-  margin-bottom: 0.5rem;
+}
+
+.add-photo-btn {
+  margin-right: auto;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 4px;
+  line-height: 1.428571429;
+  border-radius: 15px;
 }
 
 .signup-btn {
@@ -35,7 +53,10 @@ input[type="file"] {
 
 .image-preview {
   height: 5rem;
-  margin: 1rem 0;
+  /*margin: 1rem 0;*/
+  display: block;
+  /*float: left;*/
+  /*margin-top: -1.5rem;*/
 }
 
 .image-preview img {
@@ -58,4 +79,15 @@ mat-checkbox {
   display: flex;
 }
 
+mat-error {
+  direction: rtl;
+}
+
+.photos-lbl {
+  text-align: right;
+}
+
+h2 {
+  text-align: center;
+}
 

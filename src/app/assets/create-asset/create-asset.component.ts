@@ -26,10 +26,7 @@ export class CreateAssetComponent implements OnInit {
   categories: string[] = ['דירה', 'פנטהאוז', 'קוטג\'', 'וילה', 'יחידת דיור', 'דירת גן', 'דופלקס'];
   form: FormGroup;
   isAuthenticated = false;
-  // imagePreview: string[] = [];
-  imagePreview: File[] = [];
-  editPreviewImage: File[] = [];
-  photosCounter = 0;
+  imagePreview: File[] = [null, null, null, null, null];
   asset: Asset;
   private authStatusSub: Subscription;
   mode = 'create';
@@ -128,7 +125,7 @@ export class CreateAssetComponent implements OnInit {
                   this.asset.photos[i],
                   {validators: [Validators.required], asyncValidators: [mimeType]}
                 ));
-                this.imagePreview.push(this.asset.photos[i]);
+                this.imagePreview[i] = this.asset.photos[i];
               }
             });
         } else {
@@ -138,8 +135,17 @@ export class CreateAssetComponent implements OnInit {
       });
   }
 
+  onRemovePhoto(imageName: string, num: number, input: HTMLInputElement) {
+    this.form.removeControl(imageName);
+    input.value = null;
+    this.imagePreview[num] = null;
+  }
+
   onImagePicked(event: Event, imageName: string, num: number) {
     const file = (event.target as HTMLInputElement).files[0];
+    if (!file) {
+      return;
+    }
 
     if (this.form.get(imageName)) {
       this.form.patchValue({imageName: file});
