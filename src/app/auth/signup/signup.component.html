@@ -12,6 +12,50 @@
         <mat-error *ngIf="signupForm.get('username').invalid">אנא הכנס שם משתמש חוקי.</mat-error>
       </mat-form-field>
 
+      <mat-form-field>
+        <input
+          dir="rtl"
+          matInput
+          type="text"
+          name="firstName"
+          formControlName="firstName"
+          placeholder="שם פרטי">
+        <mat-error *ngIf="signupForm.get('firstName').invalid">אנא הכנס שם פרטי.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          dir="rtl"
+          matInput
+          type="text"
+          name="lastName"
+          formControlName="lastName"
+          placeholder="שם משפחה">
+        <mat-error *ngIf="signupForm.get('lastName').invalid">אנא הכנס שם משפחה.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="email"
+          name="email"
+          formControlName="email"
+          placeholder="אימייל">
+        <mat-error *ngIf="signupForm.get('email').invalid">אנא הכנס כתובת אימייל חוקית.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select
+          placeholder="סוג משתמש"
+          dir="rtl"
+          name="role"
+          formControlName="role">
+          <mat-option [value]="1">מנהל</mat-option>
+          <mat-option [value]="2">עובד</mat-option>
+        </mat-select>
+        <mat-error *ngIf="signupForm.get('role').invalid">יש לבחור את סוג המשתמש.</mat-error>
+      </mat-form-field>
+
       <div formGroupName="userPassword">
         <mat-form-field>
           <input

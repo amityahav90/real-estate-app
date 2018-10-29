@@ -1,20 +1,12 @@
-<mat-form-field>
-  <input
-    dir="rtl"
-    matInput
-    (keyup)="applyFilter($event.target.value)"
-    placeholder="חיפוש">
-</mat-form-field>
-
 <table
-  *ngIf="assets"
+  *ngIf="users"
   mat-table
   [dataSource]="dataSource"
   multiTemplateDataRows
   class="mat-elevation-z8">
   <ng-container matColumnDef="{{ column }}" *ngFor="let column of columnsToDisplay">
     <th mat-header-cell *matHeaderCellDef> {{ column | hebPipe }} </th>
-    <td mat-cell *matCellDef="let element"> {{ element[column.toLowerCase()] }} </td>
+    <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
   </ng-container>
 
   <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
@@ -22,19 +14,19 @@
     <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
       <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
         <div class="example-element-description">
-          {{ element.description }}
-          <span class="action-panel">
-            <button
-              class="btn btn-success"
-              type="button"
-              (click)="onEdit(element._id)">
-              ערוך
-            </button>
-            <button
-              class="btn btn-danger"
-              type="button"
-              (click)="onDelete(element._id)">מחק</button>
-          </span>
+          <!--{{ element.description }}-->
+          <!--<span class="action-panel">-->
+            <!--<button-->
+              <!--class="btn btn-success"-->
+              <!--type="button"-->
+              <!--(click)="onEdit(element._id)">-->
+              <!--ערוך-->
+            <!--</button>-->
+            <!--<button-->
+              <!--class="btn btn-danger"-->
+              <!--type="button"-->
+              <!--(click)="onDelete(element._id)">מחק</button>-->
+          <!--</span>-->
         </div>
       </div>
     </td>
@@ -59,4 +51,3 @@
     הוסף נכס חדש
   </button>
 </div>
-

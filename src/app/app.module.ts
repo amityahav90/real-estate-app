@@ -29,6 +29,7 @@ import { ContactFormComponent } from './contact/contact-form/contact-form.compon
 import {AdminRoutingModule} from './admin-page/admin-routing.module';
 import { AssetsTableComponent } from './core/assets-table/assets-table.component';
 import {HebrewPipe} from './core/pipes/hebrew.pipe';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {HebrewPipe} from './core/pipes/hebrew.pipe';
     ShortDatePipe,
     ContactFormComponent,
     AssetsTableComponent,
-    HebrewPipe
+    HebrewPipe,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

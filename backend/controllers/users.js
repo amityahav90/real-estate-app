@@ -8,6 +8,10 @@ exports.createUser = (req, res, next) => {
     .then(hash => {
      const newUser = new User({
        username: req.body.username,
+       firstName: req.body.firstName,
+       lastName: req.body.lastName,
+       email: req.body.email,
+       role: req.body.role,
        password: hash
      });
       newUser.save()
@@ -29,4 +33,26 @@ exports.createUser = (req, res, next) => {
           });
        });
   });
+}
+
+exports.getUsers = (req, res, next) => {
+  User.find()
+    .then(users => {
+      if (users) {
+        res.status(200).json({
+          message: 'Users fetched successfully',
+          users: users
+        });
+      } else {
+        res.status(401).json({
+          message: 'Failed to fetch users'
+        });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: 'Unknown error occurred.',
+        error: error
+      });
+    });
 }

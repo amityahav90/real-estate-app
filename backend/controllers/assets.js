@@ -136,26 +136,46 @@ exports.updateAsset = (req, res, next) => {
 }
 
 exports.getAssetsByType = (req, res, next) => {
-  console.log(req.query.type);
-  Asset.find({ type: req.query.type })
-    .then(assets => {
-      if (assets) {
-        console.log(assets);
-        res.status(200).json({
-          message: 'Assets fetched successfully.',
-          assets: assets
+  if (req.query.type === 'all') {
+    Asset.find()
+      .then(assets => {
+        if (assets) {
+          res.status(200).json({
+            message: 'Assets fetched successfully.',
+            assets: assets
+          });
+        } else {
+          res.status(401).json({
+            message: 'Failed to fetch assets.'
+          });
+        }
+      })
+      .catch(error => {
+        res.status(500).json({
+          message: 'Unknown error occurred.'
         });
-      } else {
-        res.status(401).json({
-          message: 'Failed to fetch assets.'
-        });
-      }
-    })
-    .catch(error => {
-      res.status(500).json({
-        message: 'Unknown error occurred.'
       });
-    });
+  } else {
+    Asset.find({ type: req.query.type })
+      .then(assets => {
+        if (assets) {
+          console.log(assets);
+          res.status(200).json({
+            message: 'Assets fetched successfully.',
+            assets: assets
+          });
+        } else {
+          res.status(401).json({
+            message: 'Failed to fetch assets.'
+          });
+        }
+      })
+      .catch(error => {
+        res.status(500).json({
+          message: 'Unknown error occurred.'
+        });
+      });
+  }
 }
 
 exports.getAssetById = (req, res, next) => {

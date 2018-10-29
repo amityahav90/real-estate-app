@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./admin-page.component.css']
 })
 export class AdminPageComponent implements OnInit {
-
+  navbarOpen = false;
 
   constructor() {
   }
@@ -14,4 +14,7 @@ export class AdminPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
 }

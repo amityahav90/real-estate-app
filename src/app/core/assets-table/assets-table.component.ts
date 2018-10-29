@@ -5,7 +5,7 @@ import {Asset} from '../../assets/asset.model';
 import {Subscription} from 'rxjs';
 import {MatTableDataSource} from '@angular/material';
 import {ModalDirective} from 'angular-bootstrap-md';
-import {Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 export interface AssetElement {
   address: string;
@@ -29,15 +29,31 @@ export interface AssetElement {
 })
 export class AssetsTableComponent implements OnInit, OnDestroy {
   dataSource;
-  columnsToDisplay = ['Price', 'Category', 'Neighborhood', 'Address'];
+  columnsToDisplay = ['Price', 'Category', 'Neighborhood', 'Type', 'Address'];
   expandedElement: AssetElement;
   assets: Asset[] = [];
   assetsSubscription: Subscription;
+  assetsType: string;
+  navigationSubscription: Subscription;
 
-  constructor(private assetService: AssetService, private router: Router) {}
+  constructor(
+    private assetService: AssetService,
+    private router: Router,
+    private route: ActivatedRoute) {
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.initialize();
+      }
+    });
+  }
 
   ngOnInit() {
-    this.assetService.getAssetsByType('sale');
+    this.initialize();
+  }
+
+  initialize() {
+    this.assetsType = this.route.snapshot.params['type'];
+    this.assetService.getAssetsByType(this.assetsType);
     this.assetsSubscription = this.assetService.getAssetsUpdatedListener()
       .subscribe((assets: Asset[]) => {
         this.assets = assets;

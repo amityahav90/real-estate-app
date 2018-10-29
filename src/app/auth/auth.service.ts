@@ -3,6 +3,9 @@ import {environment} from '../../environments/environment';
 import {Subject} from 'rxjs';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {FormGroup} from '@angular/forms';
+import {User} from '../users/user.model';
+import {Asset} from '../assets/asset.model';
 
 const BACKEND_URL = environment.apiUrl + '/user';
 
@@ -12,7 +15,9 @@ export class AuthService {
   private token: string;
   private tokenTimer: any;
   private userId: string;
+  private users: User[];
   private authStatusListener = new Subject<boolean>();
+  private usersUpdated = new Subject<User[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -32,17 +37,34 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
-  createUser(username: string, password: string) {
-    const authData = {
-      username: username,
-      password: password
+  createUser(form: FormGroup) {
+    const userData = {
+      username: form.value.username,
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      email: form.value.email,
+      role: form.value.role,
+      password: form.value.userPassword.password
     };
-    this.http.post(BACKEND_URL + '/signup', authData)
+
+    this.http.post(BACKEND_URL + '/signup', userData)
       .subscribe(() => {
         this.router.navigate(['/']);
       }, error => {
         this.authStatusListener.next(false);
       });
+  }
+
+  getAllUsers() {
+    this.http.get<{message: string, users: User[]}>(BACKEND_URL)
+      .subscribe(result => {
+        this.users = result.users;
+        this.usersUpdated.next([...this.users]);
+      });
+  }
+
+  getUsersUpdateListener() {
+    return this.usersUpdated.asObservable();
   }
 
   login(username: string, password: string) {

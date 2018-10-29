@@ -3,26 +3,20 @@
     <ul class="list-unstyled components">
       <li class="active">
         <a
-          routerLink="assets"
+          (click)="toggleNavbar()"
+          [routerLink]="['assets', 'all']"
           data-toggle="collapse"
           aria-expanded="false"
           class="dropdown-toggle">
           נכסים
         </a>
-        <ul class="collapse list-unstyled" id="homeSubmenu">
-          <li>
-            <a href="#"></a>
-          </li>
-          <li>
-            <a href="#">Home 2</a>
-          </li>
-          <li>
-            <a href="#">Home 3</a>
-          </li>
+        <ul [ngClass]="{'show': navbarOpen}" class="collapse list-unstyled" id="homeSubmenu">
+          <li><a [routerLink]="['assets', 'sale']">מכירה</a></li>
+          <li><a [routerLink]="['assets', 'rent']">השכרה</a></li>
         </ul>
       </li>
       <li>
-        <a href="#">About</a>
+        <a routerLink="users">משתמשים</a>
         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
         <ul class="collapse list-unstyled" id="pageSubmenu">
           <li>
@@ -59,7 +53,6 @@
     <router-outlet></router-outlet>
   </div>
 </div>
-
 
 
 

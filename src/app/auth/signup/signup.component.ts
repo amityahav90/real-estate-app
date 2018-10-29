@@ -23,6 +23,10 @@ export class SignupComponent implements OnInit, OnDestroy {
 
     this.signupForm = new FormGroup({
       'username': new FormControl(null, {validators: [Validators.required]}),
+      'firstName': new FormControl(null, {validators: [Validators.required]}),
+      'lastName': new FormControl(null, {validators: [Validators.required]}),
+      'email': new FormControl(null, {validators: [Validators.required, Validators.email]}),
+      'role': new FormControl(null, {validators: [Validators.required]}),
       'userPassword': new FormGroup({
         'password': new FormControl(null, {validators: Validators.required}),
         'confirmPassword': new FormControl(null, {validators: [Validators.required]})
@@ -34,8 +38,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     if (this.signupForm.invalid) {
       return;
     }
-    // console.log(this.signupForm);
-    this.authService.createUser(this.signupForm.value.username, this.signupForm.value.userPassword.password);
+    this.authService.createUser(this.signupForm);
   }
 
   ngOnDestroy() {
