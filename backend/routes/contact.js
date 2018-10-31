@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.post("", ContactController.createContact);
 
-
-
+router.get("", ContactController.getAllMessages);
 
 module.exports = router;

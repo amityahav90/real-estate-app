@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http';
 import {FormGroup} from '@angular/forms';
 import {User} from '../users/user.model';
 import {Asset} from '../assets/asset.model';
+import {map} from 'rxjs/internal/operators';
 
 const BACKEND_URL = environment.apiUrl + '/user';
 
@@ -15,7 +16,7 @@ export class AuthService {
   private token: string;
   private tokenTimer: any;
   private userId: string;
-  private users: User[];
+  private users: User[] = [];
   private authStatusListener = new Subject<boolean>();
   private usersUpdated = new Subject<User[]>();
 
@@ -47,11 +48,34 @@ export class AuthService {
       password: form.value.userPassword.password
     };
 
-    this.http.post(BACKEND_URL + '/signup', userData)
-      .subscribe(() => {
-        this.router.navigate(['/']);
+    this.http.post<{message: string, user: User}>(BACKEND_URL + '/signup', userData)
+      .subscribe(res => {
+        this.users.push(res.user);
+        this.usersUpdated.next([...this.users]);
+        this.router.navigate(['../../admin/users']);
       }, error => {
         this.authStatusListener.next(false);
+      });
+  }
+
+  updateUser(form: FormGroup, userId: string) {
+    const userData = {
+      username: form.value.username,
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      email: form.value.email,
+      role: form.value.role,
+      password: form.value.userPassword.password
+    };
+
+    this.http.put<{message: string, user: User}>(BACKEND_URL + '/' + userId, userData)
+      .subscribe(result => {
+        const index = this.users.findIndex(x => x._id === result.user._id);
+        if (index > -1) {
+          this.users[index] = result.user;
+          this.usersUpdated.next([...this.users]);
+          this.router.navigate(['../../admin/users']);
+        }
       });
   }
 
@@ -61,6 +85,10 @@ export class AuthService {
         this.users = result.users;
         this.usersUpdated.next([...this.users]);
       });
+  }
+
+  getUserById(userId: string) {
+    return this.http.get<{message: string, user: User}>(BACKEND_URL + '/' + userId);
   }
 
   getUsersUpdateListener() {
@@ -86,6 +114,17 @@ export class AuthService {
         }
       }, error => {
         this.authStatusListener.next(false);
+      });
+  }
+
+  deleteUser(userId: string) {
+    this.http.delete<{message: string, userId: string}>(BACKEND_URL + '/' + userId)
+      .subscribe(result => {
+        const index = this.users.findIndex(x => x._id === result.userId);
+        if (index > -1) {
+          this.users.splice(index, 1);
+          this.usersUpdated.next([...this.users]);
+        }
       });
   }
 

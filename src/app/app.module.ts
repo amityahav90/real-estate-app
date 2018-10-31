@@ -30,6 +30,7 @@ import {AdminRoutingModule} from './admin-page/admin-routing.module';
 import { AssetsTableComponent } from './core/assets-table/assets-table.component';
 import {HebrewPipe} from './core/pipes/hebrew.pipe';
 import { UsersComponent } from './users/users.component';
+import { MessagesComponent } from './core/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { UsersComponent } from './users/users.component';
     ContactFormComponent,
     AssetsTableComponent,
     HebrewPipe,
-    UsersComponent
+    UsersComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

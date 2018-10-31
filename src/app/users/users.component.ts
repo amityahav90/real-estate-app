@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs';
 import {User} from './user.model';
 import {AuthService} from '../auth/auth.service';
 import {MatTableDataSource} from '@angular/material';
+import {Router} from '@angular/router';
 
 export interface UserElement {
   username: string;
@@ -33,7 +34,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   users: User[] = [];
   usersSubscription: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.authService.getAllUsers();
@@ -42,6 +43,14 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.users = users;
         this.dataSource = new MatTableDataSource(this.users);
       });
+  }
+
+  onEdit(userId: string) {
+    this.router.navigate(['../../admin/signup', userId]);
+  }
+
+  onDelete(userId: string) {
+    this.authService.deleteUser(userId);
   }
 
   ngOnDestroy() {

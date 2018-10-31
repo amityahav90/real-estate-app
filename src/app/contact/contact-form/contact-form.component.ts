@@ -46,7 +46,7 @@ export class ContactFormComponent implements OnInit {
     if (this.asset) {
       this.contactForm.addControl('assetId', new FormControl(this.asset._id));
     }
-    this.contactService.createContact(this.contactForm)
+    this.contactService.createMessage(this.contactForm)
       .subscribe(result => {
         if (result.message === 'success') {
           this.successModal.show();
