@@ -4,4 +4,7 @@ export interface Message {
   phone: string;
   email: string;
   message: string;
+  assetId: string;
+  address: string;
+  type: string;
 }

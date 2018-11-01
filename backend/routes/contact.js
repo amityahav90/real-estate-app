@@ -8,4 +8,6 @@ router.post("", ContactController.createContact);
 
 router.get("", ContactController.getAllMessages);
 
+router.delete("/:id", ContactController.deleteMessage);
+
 module.exports = router;

@@ -21,14 +21,25 @@ export class ContactService {
   }
 
   createMessage(contactForm: FormGroup) {
-    const messageData = {
-      name: contactForm.value.name,
-      phone: contactForm.value.phone,
-      email: contactForm.value.email,
-      message: contactForm.value.message,
-      assetId: contactForm.value.assetId
-    };
-
+    let messageData;
+    if (contactForm.get('assetId')) {
+      messageData = {
+        name: contactForm.value.name,
+        phone: contactForm.value.phone,
+        email: contactForm.value.email,
+        message: contactForm.value.message,
+        assetId: contactForm.value.assetId,
+        address: contactForm.value.address,
+        type: contactForm.value.type
+      };
+    } else {
+      messageData = {
+        name: contactForm.value.name,
+        phone: contactForm.value.phone,
+        email: contactForm.value.email,
+        message: contactForm.value.message
+      };
+    }
     return this.http.post<{message: string}>(BACKEND_URL, messageData);
   }
 
@@ -37,6 +48,19 @@ export class ContactService {
       .subscribe(result => {
         this.messages = result.messages;
         this.messagesUpdate.next([...this.messages]);
+      });
+  }
+
+  deleteMesssge(msgId: string) {
+    this.http.delete<{message: string}>(BACKEND_URL + '/' + msgId)
+      .subscribe(result => {
+        if (result.message === 'success') {
+          const index = this.messages.findIndex(x => x._id === msgId);
+          if (index > -1) {
+            this.messages.splice(index, 1);
+            this.messagesUpdate.next([...this.messages]);
+          }
+        }
       });
   }
 }

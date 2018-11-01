@@ -4,13 +4,17 @@
   margin-left: 1rem;
   margin-bottom: 2rem;
   text-align: right;
+  /*width: 40%;*/
+  /*height: 95%;*/
+  /*box-sizing: border-box;*/
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
+/*mat-card-content {*/
+  /*position: absolute;*/
+  /*min-height: 100% !important;*/
+/*}*/
 
 .more-details-btn {
   text-align: center;
 }
+

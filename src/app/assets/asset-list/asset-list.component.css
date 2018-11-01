@@ -1,6 +1,10 @@
 /*.row {*/
   /*margin: 1rem;*/
 /*}*/
+.container {
+  height: 100vh;
+}
+
 .column {
   float: left;
   /*padding: 20px;*/
@@ -17,3 +21,8 @@
 .right {
   width: 20%;
 }
+
+mat-grid-tile {
+  background: lightblue;
+}
+

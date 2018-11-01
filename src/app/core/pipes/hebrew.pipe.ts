@@ -10,7 +10,13 @@ export class HebrewPipe implements PipeTransform {
       case 'Address':
         result = 'כתובת';
         break;
+      case 'address':
+        result = 'כתובת';
+        break;
       case 'Type':
+        result = 'סוג הנכס';
+        break;
+      case 'type':
         result = 'סוג הנכס';
         break;
       case 'Neighborhood':
@@ -36,6 +42,15 @@ export class HebrewPipe implements PipeTransform {
         break;
       case 'role':
         result = 'תפקיד';
+        break;
+      case 'name':
+        result = 'שם מלא';
+        break;
+      case 'phone':
+        result = 'מספר טלפון';
+        break;
+      case 'asset':
+        result = 'שם הנכס';
         break;
       default:
         result = value;

@@ -1,5 +1,9 @@
-<mat-selection-list #optionList>
-  <mat-list-option *ngFor="let option of options" [value]="option.value">
+<h5>סנן לפי מספר חדרים:</h5>
+
+<mat-selection-list #optionList (selectionChange)="onSelectOption($event)">
+  <mat-list-option
+    *ngFor="let option of options"
+    [value]="option.value">
     {{ option.showValue }}
   </mat-list-option>
 </mat-selection-list>

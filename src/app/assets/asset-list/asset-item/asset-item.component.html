@@ -1,12 +1,16 @@
 <mat-card class="example-card">
-  <img mat-card-image [src]="asset.photos[0]">
+  <img height="150" width="200" mat-card-image [src]="asset.photos[0]" class="img-responsive">
   <mat-card-content>
-    <p dir="rtl">{{ asset.description }}</p>
+    <h4 dir="rtl">{{ asset.address }}</h4>
+    <p dir="rtl">{{ asset.description | shorten: 100 }}</p>
   </mat-card-content>
   <mat-card-actions class="more-details-btn">
-    <button mat-raised-button (click)="onDetailsClicked()">פרטים נוספים</button>
+    <button id="more-details" mat-raised-button (click)="onDetailsClicked()">פרטים נוספים</button>
   </mat-card-actions>
 </mat-card>
+
+
+
 
 
 

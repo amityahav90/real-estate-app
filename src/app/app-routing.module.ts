@@ -9,9 +9,10 @@ import {CreateAssetComponent} from './assets/create-asset/create-asset.component
 import {AssetDetailComponent} from './assets/asset-detail/asset-detail.component';
 import {ContactFormComponent} from './contact/contact-form/contact-form.component';
 import {AdminPageComponent} from './admin-page/admin-page.component';
+import {HomeComponent} from './home/home.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', component: HomeComponent , pathMatch: 'full' },
   { path: 'assets/detail/:id', component: AssetDetailComponent },
   { path: 'assets/edit/:id', component: CreateAssetComponent },
   { path: 'assets/:type', component: AssetListComponent, runGuardsAndResolvers: 'paramsChange' },

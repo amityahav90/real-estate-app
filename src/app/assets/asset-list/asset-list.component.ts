@@ -3,6 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Asset} from '../asset.model';
 import {AssetService} from '../asset.service';
 import {Subscription} from 'rxjs';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-asset-list',
@@ -11,6 +12,7 @@ import {Subscription} from 'rxjs';
 })
 export class AssetListComponent implements OnInit, OnDestroy {
   assets: Asset[] = [];
+  filteredAssets: Asset[] = [];
   assetsSubscription: Subscription;
   navigationSubscription: Subscription;
 
@@ -35,7 +37,27 @@ export class AssetListComponent implements OnInit, OnDestroy {
     this.assetsSubscription = this.assetService.getAssetsUpdatedListener()
       .subscribe((assets: Asset[]) => {
         this.assets = assets;
+        this.filteredAssets = this.assets;
       });
+  }
+
+  onSelection(event) {
+    if (event.length === 0) {
+      this.filteredAssets = this.assets;
+      return;
+    }
+    this.filteredAssets = [];
+    for (const asset of this.assets) {
+      for (const value of event) {
+        if (value === 6) {
+          if (asset.roomsAmount >= value) {
+            this.filteredAssets.push(asset);
+          }
+        } else if (asset.roomsAmount === value) {
+          this.filteredAssets.push(asset);
+        }
+      }
+    }
   }
 
   ngOnDestroy() {

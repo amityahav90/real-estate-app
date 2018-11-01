@@ -1,33 +1,14 @@
-<!--<app-asset-item-->
-  <!--*ngFor="let asset of assets"-->
-  <!--[asset]="asset">-->
-<!--</app-asset-item>-->
-
-<!--<mat-grid-list cols="2" fit>-->
-
-  <!--<mat-grid-tile>-->
-    <!--<app-asset-item-->
-      <!--*ngFor="let asset of assets"-->
-      <!--[asset]="asset">-->
-    <!--</app-asset-item>-->
-  <!--</mat-grid-tile>-->
-
-  <!--<mat-grid-tile>-->
-    <!--<app-filter></app-filter>-->
-  <!--</mat-grid-tile>-->
-
-<!--</mat-grid-list>-->
-
 <div class="container">
   <div class="row">
     <div class="column left">
       <app-asset-item
-        *ngFor="let asset of assets"
+        *ngFor="let asset of filteredAssets"
         [asset]="asset">
       </app-asset-item>
     </div>
     <div class="column right">
-      <app-filter></app-filter>
+      <app-filter (selection)="onSelection($event)"></app-filter>
     </div>
   </div>
 </div>
+

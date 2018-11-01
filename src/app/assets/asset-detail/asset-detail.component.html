@@ -1,35 +1,36 @@
-<div class="carousel" *ngIf="asset">
-  <app-carousel [asset]="asset"></app-carousel>
-</div>
-
-<div class="header" *ngIf="asset">
-  <h2 dir="rtl" *ngIf="asset.type === 'sale'" class="h1 text-center mb-5">
-    למכירה: {{ asset.category }},
-    {{ asset.roomsAmount }} חדרים
-    ב{{ asset.address }}
-  </h2>
-  <h2 dir="rtl" *ngIf="asset.type === 'rent'" class="h1 text-center mb-5">
-    להשכרה: {{ asset.category }},
-    {{ asset.roomsAmount }} חדרים
-    ב{{ asset.address }}
-  </h2>
-</div>
-
-
-<div class="row">
-  <div class="column left" *ngIf="asset">
-    <app-contact-form [asset]="asset"></app-contact-form>
+<div class="container">
+  <div class="carousel" *ngIf="asset">
+    <app-carousel [asset]="asset"></app-carousel>
   </div>
 
-  <div class="column right">
-    <section class="py-4 text-right" *ngIf="asset">
+  <div class="header" *ngIf="asset">
+    <h2 dir="rtl" *ngIf="asset.type === 'sale'" class="h1 text-center mb-5">
+      למכירה: {{ asset.category }},
+      {{ asset.roomsAmount }} חדרים
+      ב{{ asset.address }}
+    </h2>
+    <h2 dir="rtl" *ngIf="asset.type === 'rent'" class="h1 text-center mb-5">
+      להשכרה: {{ asset.category }},
+      {{ asset.roomsAmount }} חדרים
+      ב{{ asset.address }}
+    </h2>
+  </div>
 
 
-      <hr class="mb-5">
+  <div class="row">
+    <div class="column left" *ngIf="asset">
+      <app-contact-form [asset]="asset"></app-contact-form>
+    </div>
 
-      <!--Asset's details-->
-      <div class="row">
-        <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
+    <div class="column right">
+      <section class="py-4 text-right" *ngIf="asset">
+
+
+        <hr class="mb-5">
+
+        <!--Asset's details-->
+        <div class="row">
+          <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
       <span class="asset-details">
         <ul class="right-col column">
         <li class="grey-text"><strong>סוג הנכס:</strong> {{ asset.category }}</li>
@@ -44,20 +45,20 @@
         <li class="grey-text"><strong>תאריך כניסה:</strong> {{ asset.entranceDate | date: 'dd/MM/yy' }}</li>
       </ul>
       </span>
+          </div>
+          <div class="col-lg-5 col-xl-4 mb-4">
+            <h3 class="mb-3 font-weight-bold dark-grey-text details">
+              <strong>פרטי הנכס</strong>
+            </h3>
+          </div>
         </div>
-        <div class="col-lg-5 col-xl-4 mb-4">
-          <h3 class="mb-3 font-weight-bold dark-grey-text details">
-            <strong>פרטי הנכס</strong>
-          </h3>
-        </div>
-      </div>
-      <!--End of Asset's details-->
+        <!--End of Asset's details-->
 
-      <hr class="mb-5">
+        <hr class="mb-5">
 
-      <!--Additional information-->
-      <div class="row">
-        <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
+        <!--Additional information-->
+        <div class="row">
+          <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
       <span class="more-details">
         <ul class="right-col column">
           <li class="grey-text">
@@ -118,33 +119,33 @@
           </li>
         </ul>
       </span>
+          </div>
+          <div class="col-lg-5 col-xl-4 mb-4">
+            <h3 class="mb-3 font-weight-bold dark-grey-text details">
+              <strong>פרטים נוספים</strong>
+            </h3>
+          </div>
         </div>
-        <div class="col-lg-5 col-xl-4 mb-4">
-          <h3 class="mb-3 font-weight-bold dark-grey-text details">
-            <strong>פרטים נוספים</strong>
-          </h3>
-        </div>
-      </div>
-      <!--End of Additional information-->
+        <!--End of Additional information-->
 
-      <hr class="mb-5">
+        <hr class="mb-5">
 
-      <!--Asset description-->
-      <div class="row">
-        <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
-          <p class="grey-text">{{ asset.description }}</p>
+        <!--Asset description-->
+        <div class="row">
+          <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
+            <p class="grey-text">{{ asset.description }}</p>
+          </div>
+          <div class="col-lg-5 col-xl-4 mb-4">
+            <h3 class="mb-3 font-weight-bold dark-grey-text details">
+              <strong>תיאור הנכס</strong>
+            </h3>
+          </div>
         </div>
-        <div class="col-lg-5 col-xl-4 mb-4">
-          <h3 class="mb-3 font-weight-bold dark-grey-text details">
-            <strong>תיאור הנכס</strong>
-          </h3>
-        </div>
-      </div>
-      <!--End of Asset's description-->
+        <!--End of Asset's description-->
 
-    </section>
+      </section>
+    </div>
   </div>
-</div>
 
 
 
@@ -184,25 +185,25 @@
 
 
 
-<!--<div class="carousel" *ngIf="asset">-->
+  <!--<div class="carousel" *ngIf="asset">-->
   <!--<app-carousel [asset]="asset"></app-carousel>-->
-<!--</div>-->
+  <!--</div>-->
 
-<!--<app-contact-form [asset]="asset"></app-contact-form>-->
+  <!--<app-contact-form [asset]="asset"></app-contact-form>-->
 
 
 
-<!--<section class="py-4 text-right" *ngIf="asset">-->
+  <!--<section class="py-4 text-right" *ngIf="asset">-->
   <!--&lt;!&ndash;Header&ndash;&gt;-->
   <!--<h2 dir="rtl" *ngIf="asset.type === 'sale'" class="h1 text-center mb-5">-->
-    <!--למכירה: {{ asset.category }},-->
-    <!--{{ asset.roomsAmount }} חדרים-->
-    <!--ב{{ asset.address }}-->
+  <!--למכירה: {{ asset.category }},-->
+  <!--{{ asset.roomsAmount }} חדרים-->
+  <!--ב{{ asset.address }}-->
   <!--</h2>-->
   <!--<h2 dir="rtl" *ngIf="asset.type === 'rent'" class="h1 text-center mb-5">-->
-    <!--להשכרה: {{ asset.category }},-->
-    <!--{{ asset.roomsAmount }} חדרים-->
-    <!--ב{{ asset.address }}-->
+  <!--להשכרה: {{ asset.category }},-->
+  <!--{{ asset.roomsAmount }} חדרים-->
+  <!--ב{{ asset.address }}-->
   <!--</h2>-->
   <!--&lt;!&ndash;End of header&ndash;&gt;-->
 
@@ -210,27 +211,27 @@
 
   <!--&lt;!&ndash;Asset's details&ndash;&gt;-->
   <!--<div class="row">-->
-    <!--<div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">-->
-      <!--<span class="asset-details">-->
-        <!--<ul class="right-col column">-->
-        <!--<li class="grey-text"><strong>סוג הנכס:</strong> {{ asset.category }}</li>-->
-        <!--<li class="grey-text"><strong>כתובת:</strong> {{ asset.address }}</li>-->
-        <!--<li class="grey-text"><strong>שכונה:</strong> {{ asset.neighborhood }}</li>-->
-        <!--<li class="grey-text"><strong>מחיר:</strong> {{ asset.price | currency : 'ILS' : 'symbol' : '1.0' }}</li>-->
-      <!--</ul>-->
-      <!--<ul class="left-col column">-->
-        <!--<li class="grey-text"><strong>גודל הנכס:</strong> {{ asset.size }} מ"ר</li>-->
-        <!--<li class="grey-text"><strong>מספר חדרים:</strong> {{ asset.roomsAmount }}</li>-->
-        <!--<li class="grey-text"><strong>קומה:</strong> {{ asset.assetFloor }} <strong>  מתוך:</strong> {{ asset.totalFloors }}</li>-->
-        <!--<li class="grey-text"><strong>תאריך כניסה:</strong> {{ asset.entranceDate | date: 'dd/MM/yy' }}</li>-->
-      <!--</ul>-->
-      <!--</span>-->
-    <!--</div>-->
-    <!--<div class="col-lg-5 col-xl-4 mb-4">-->
-      <!--<h3 class="mb-3 font-weight-bold dark-grey-text details">-->
-        <!--<strong>פרטי הנכס</strong>-->
-      <!--</h3>-->
-    <!--</div>-->
+  <!--<div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">-->
+  <!--<span class="asset-details">-->
+  <!--<ul class="right-col column">-->
+  <!--<li class="grey-text"><strong>סוג הנכס:</strong> {{ asset.category }}</li>-->
+  <!--<li class="grey-text"><strong>כתובת:</strong> {{ asset.address }}</li>-->
+  <!--<li class="grey-text"><strong>שכונה:</strong> {{ asset.neighborhood }}</li>-->
+  <!--<li class="grey-text"><strong>מחיר:</strong> {{ asset.price | currency : 'ILS' : 'symbol' : '1.0' }}</li>-->
+  <!--</ul>-->
+  <!--<ul class="left-col column">-->
+  <!--<li class="grey-text"><strong>גודל הנכס:</strong> {{ asset.size }} מ"ר</li>-->
+  <!--<li class="grey-text"><strong>מספר חדרים:</strong> {{ asset.roomsAmount }}</li>-->
+  <!--<li class="grey-text"><strong>קומה:</strong> {{ asset.assetFloor }} <strong>  מתוך:</strong> {{ asset.totalFloors }}</li>-->
+  <!--<li class="grey-text"><strong>תאריך כניסה:</strong> {{ asset.entranceDate | date: 'dd/MM/yy' }}</li>-->
+  <!--</ul>-->
+  <!--</span>-->
+  <!--</div>-->
+  <!--<div class="col-lg-5 col-xl-4 mb-4">-->
+  <!--<h3 class="mb-3 font-weight-bold dark-grey-text details">-->
+  <!--<strong>פרטי הנכס</strong>-->
+  <!--</h3>-->
+  <!--</div>-->
   <!--</div>-->
   <!--&lt;!&ndash;End of Asset's details&ndash;&gt;-->
 
@@ -238,73 +239,73 @@
 
   <!--&lt;!&ndash;Additional information&ndash;&gt;-->
   <!--<div class="row">-->
-    <!--<div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">-->
-      <!--<span class="more-details">-->
-        <!--<ul class="right-col column">-->
-          <!--<li class="grey-text">-->
-            <!--<span *ngIf="asset.isAirCondition">-->
-              <!--<i class="fa fa-check" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<span *ngIf="!asset.isAirCondition">-->
-              <!--<i class="fa fa-times" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<strong>מיזוג</strong>-->
-          <!--</li>-->
-          <!--<li class="grey-text">-->
-            <!--<span *ngIf="asset.isElevator">-->
-              <!--<i class="fa fa-check" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<span *ngIf="!asset.isElevator">-->
-              <!--<i class="fa fa-times" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<strong>מעלית</strong>-->
-          <!--</li>-->
-          <!--<li class="grey-text">-->
-            <!--<span *ngIf="asset.isBalcony">-->
-              <!--<i class="fa fa-check" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<span *ngIf="!asset.isBalcony">-->
-              <!--<i class="fa fa-times" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<strong>מרפסת</strong>-->
-          <!--</li>-->
-        <!--</ul>-->
-        <!--<ul class="left-col column">-->
-          <!--<li class="grey-text">-->
-            <!--<span *ngIf="asset.isParking">-->
-              <!--<i class="fa fa-check" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<span *ngIf="!asset.isParking">-->
-              <!--<i class="fa fa-times" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<strong>חניה</strong>-->
-          <!--</li>-->
-          <!--<li class="grey-text">-->
-            <!--<span *ngIf="asset.isShield">-->
-              <!--<i class="fa fa-check" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<span *ngIf="!asset.isShield">-->
-              <!--<i class="fa fa-times" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<strong>ממ"ד</strong>-->
-          <!--</li>-->
-          <!--<li class="grey-text">-->
-            <!--<span *ngIf="asset.isStroeroom">-->
-              <!--<i class="fa fa-check" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<span *ngIf="!asset.isStroeroom">-->
-              <!--<i class="fa fa-times" aria-hidden="true"></i>-->
-            <!--</span>-->
-            <!--<strong>מחסן</strong>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</span>-->
-    <!--</div>-->
-    <!--<div class="col-lg-5 col-xl-4 mb-4">-->
-      <!--<h3 class="mb-3 font-weight-bold dark-grey-text details">-->
-        <!--<strong>פרטים נוספים</strong>-->
-      <!--</h3>-->
-    <!--</div>-->
+  <!--<div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">-->
+  <!--<span class="more-details">-->
+  <!--<ul class="right-col column">-->
+  <!--<li class="grey-text">-->
+  <!--<span *ngIf="asset.isAirCondition">-->
+  <!--<i class="fa fa-check" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<span *ngIf="!asset.isAirCondition">-->
+  <!--<i class="fa fa-times" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<strong>מיזוג</strong>-->
+  <!--</li>-->
+  <!--<li class="grey-text">-->
+  <!--<span *ngIf="asset.isElevator">-->
+  <!--<i class="fa fa-check" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<span *ngIf="!asset.isElevator">-->
+  <!--<i class="fa fa-times" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<strong>מעלית</strong>-->
+  <!--</li>-->
+  <!--<li class="grey-text">-->
+  <!--<span *ngIf="asset.isBalcony">-->
+  <!--<i class="fa fa-check" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<span *ngIf="!asset.isBalcony">-->
+  <!--<i class="fa fa-times" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<strong>מרפסת</strong>-->
+  <!--</li>-->
+  <!--</ul>-->
+  <!--<ul class="left-col column">-->
+  <!--<li class="grey-text">-->
+  <!--<span *ngIf="asset.isParking">-->
+  <!--<i class="fa fa-check" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<span *ngIf="!asset.isParking">-->
+  <!--<i class="fa fa-times" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<strong>חניה</strong>-->
+  <!--</li>-->
+  <!--<li class="grey-text">-->
+  <!--<span *ngIf="asset.isShield">-->
+  <!--<i class="fa fa-check" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<span *ngIf="!asset.isShield">-->
+  <!--<i class="fa fa-times" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<strong>ממ"ד</strong>-->
+  <!--</li>-->
+  <!--<li class="grey-text">-->
+  <!--<span *ngIf="asset.isStroeroom">-->
+  <!--<i class="fa fa-check" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<span *ngIf="!asset.isStroeroom">-->
+  <!--<i class="fa fa-times" aria-hidden="true"></i>-->
+  <!--</span>-->
+  <!--<strong>מחסן</strong>-->
+  <!--</li>-->
+  <!--</ul>-->
+  <!--</span>-->
+  <!--</div>-->
+  <!--<div class="col-lg-5 col-xl-4 mb-4">-->
+  <!--<h3 class="mb-3 font-weight-bold dark-grey-text details">-->
+  <!--<strong>פרטים נוספים</strong>-->
+  <!--</h3>-->
+  <!--</div>-->
   <!--</div>-->
   <!--&lt;!&ndash;End of Additional information&ndash;&gt;-->
 
@@ -312,15 +313,17 @@
 
   <!--&lt;!&ndash;Asset description&ndash;&gt;-->
   <!--<div class="row">-->
-    <!--<div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">-->
-      <!--<p class="grey-text">{{ asset.description }}</p>-->
-    <!--</div>-->
-    <!--<div class="col-lg-5 col-xl-4 mb-4">-->
-      <!--<h3 class="mb-3 font-weight-bold dark-grey-text details">-->
-        <!--<strong>תיאור הנכס</strong>-->
-      <!--</h3>-->
-    <!--</div>-->
+  <!--<div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">-->
+  <!--<p class="grey-text">{{ asset.description }}</p>-->
+  <!--</div>-->
+  <!--<div class="col-lg-5 col-xl-4 mb-4">-->
+  <!--<h3 class="mb-3 font-weight-bold dark-grey-text details">-->
+  <!--<strong>תיאור הנכס</strong>-->
+  <!--</h3>-->
+  <!--</div>-->
   <!--</div>-->
   <!--&lt;!&ndash;End of Asset's description&ndash;&gt;-->
 
-<!--</section>-->
+  <!--</section>-->
+
+</div>

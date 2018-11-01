@@ -31,6 +31,9 @@ import { AssetsTableComponent } from './core/assets-table/assets-table.component
 import {HebrewPipe} from './core/pipes/hebrew.pipe';
 import { UsersComponent } from './users/users.component';
 import { MessagesComponent } from './core/messages/messages.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import {ShortenPipe} from './core/pipes/shorten.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { MessagesComponent } from './core/messages/messages.component';
     AssetsTableComponent,
     HebrewPipe,
     UsersComponent,
-    MessagesComponent
+    MessagesComponent,
+    FooterComponent,
+    HomeComponent,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,

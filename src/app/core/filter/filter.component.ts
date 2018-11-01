@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -13,10 +13,21 @@ export class FilterComponent implements OnInit {
     { value: 5, showValue: '5 חדרים' },
     { value: 6, showValue: '6 חדרים ויותר' }
   ];
+  selectedRooms: Array<number> = [];
+  @Output() selection = new EventEmitter<Array<number>>();
 
   constructor() {}
 
   ngOnInit() {
   }
 
+  onSelectOption(event) {
+    const currentSelection = event.option.value;
+    if (this.selectedRooms.includes(currentSelection)) {
+      this.selectedRooms.splice(this.selectedRooms.indexOf(currentSelection), 1);
+    } else {
+      this.selectedRooms.push(currentSelection);
+    }
+    this.selection.emit(this.selectedRooms);
+  }
 }

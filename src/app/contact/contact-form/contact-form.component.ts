@@ -45,6 +45,8 @@ export class ContactFormComponent implements OnInit {
   onSubmit(formDirective: FormGroupDirective) {
     if (this.asset) {
       this.contactForm.addControl('assetId', new FormControl(this.asset._id));
+      this.contactForm.addControl('address', new FormControl(this.asset.address));
+      this.contactForm.addControl('type', new FormControl(this.asset.type));
     }
     this.contactService.createMessage(this.contactForm)
       .subscribe(result => {

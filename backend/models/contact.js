@@ -5,7 +5,9 @@ const contactSchema = mongoose.Schema({
   phone: { type: String, required: true },
   email: { type: String, required: true },
   message: { type: String },
-  assetId: { type: String }
+  assetId: { type: String },
+  address: { type: String },
+  type: { type: String }
 });
 
 module.exports = mongoose.model('Contact', contactSchema);
