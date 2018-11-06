@@ -10,4 +10,6 @@ router.get("", ContactController.getAllMessages);
 
 router.delete("/:id", ContactController.deleteMessage);
 
+router.post("/review", ContactController.createReview);
+
 module.exports = router;

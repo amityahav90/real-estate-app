@@ -63,4 +63,13 @@ export class ContactService {
         }
       });
   }
+
+  createReview(name: string, email: string, message: string) {
+    const reviewData = {
+      name: name,
+      email: email,
+      message: message
+    };
+    return this.http.post<{message: string}>(BACKEND_URL + '/review', reviewData);
+  }
 }

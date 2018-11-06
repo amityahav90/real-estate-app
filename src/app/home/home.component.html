@@ -1,3 +1,226 @@
-<div class="container">
+<section id="slide-show">
+  <slideshow
+    [imageUrls]="images"
+    [autoPlay]="true"
+    [showArrows]="false"
+    [height]="'525px'">
+  </slideshow>
+</section>
 
+
+<hr class="mb-5 container">
+
+
+<!--Section: Features v.1-->
+<section class="text-center bg-grey fix">
+  <h2 dir="rtl" class="h1 py-5 why-label">למה תיווך הדרום?</h2>
+  <div class="row" style="display: -webkit-inline-flex">
+    <div class="col-md-4">
+      <i class="fa fa-key fa-3x orange-text"></i>
+      <h5 class="font-weight-bold mt-3">ליווי צמוד</h5>
+      <p dir="rtl" class="grey-text">
+        אצלנו בתיווך הדרום תקבלו ליווי צמוד מרגע רכישת הדירה ועד לקבלת המפתח!
+      </p>
+    </div>
+    <div class="col-md-4">
+      <i class="fa fa-book fa-3x cyan-text"></i>
+      <h5 dir="rtl" class="font-weight-bold mt-3">ניסיון</h5>
+      <p dir="rtl" class="grey-text">
+        ניסיון של למעלה מ-15 שנים בתחום הנדל"ן
+      </p>
+    </div>
+    <div class="col-md-4">
+      <i class="fa fa-clock-o fa-3x green-text"></i>
+      <h5 dir="rtl" class="font-weight-bold mt-3">90 ימים והדירה נמכרה!</h5>
+      <p dir="rtl" class="grey-text">
+        תנו לנו 90 ימים ואנו נעשה הכל בכדי למכור את הנכס שלכם במחיר הטוב ביותר וללא פשרות!
+      </p>
+    </div>
+  </div>
+</section>
+<!--Section: Features v.1-->
+
+
+<hr class="mb-5 container">
+
+
+<!--New assets section-->
+<section class="text-center fix">
+  <h2 dir="rtl" class="h1 py-5 new-assets">נכסים חדשים</h2>
+  <app-gallery [first]="firstCarousel" [second]="secondCarousel"></app-gallery>
+</section>
+<!--End of new assets section-->
+
+
+<hr class="mb-5 container">
+
+
+<!--Clients reviews section-->
+<section id="test" class="test bg-grey roomy-60 fix">
+  <div class="container">
+    <div class="row">
+      <div class="main_test fix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="head_title text-center fix">
+            <h2 dir="rtl" class="clients-review">מה הלקוחות שלנו אומרים עלינו?</h2>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="test_item fix">
+            <div class="item_text">
+              <h5>Sarah Smith</h5>
+              <h6>envato.com</h6>
+
+              <p>Natus voluptatum enim quod necessitatibus quis
+                expedita harum provident eos obcaecati id culpa
+                corporis molestias.</p>
+            </div>
+
+            <div class="item_img">
+              <img class="img-circle" src="" alt="" />
+              <i class="fa fa-quote-left"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="test_item fix">
+            <div class="item_text">
+              <h5>Sarah Smith</h5>
+              <h6>envato.com</h6>
+
+              <p>Natus voluptatum enim quod necessitatibus quis
+                expedita harum provident eos obcaecati id culpa
+                corporis molestias.</p>
+            </div>
+
+            <div class="item_img">
+              <img class="img-circle" src="" alt="" />
+              <i class="fa fa-quote-left"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="test_item fix">
+            <div class="item_text">
+              <h5>Sarah Smith</h5>
+              <h6>envato.com</h6>
+
+              <p>Natus voluptatum enim quod necessitatibus quis
+                expedita harum provident eos obcaecati id culpa
+                corporis molestias.</p>
+            </div>
+
+            <div class="item_img">
+              <img class="img-circle" src="" alt="" />
+              <i class="fa fa-quote-left"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="test_item fix">
+            <div class="item_text">
+              <h5>Sarah Smith</h5>
+              <h6>envato.com</h6>
+
+              <p>Natus voluptatum enim quod necessitatibus quis
+                expedita harum provident eos obcaecati id culpa
+                corporis molestias.</p>
+            </div>
+
+            <div class="item_img">
+              <img class="img-circle" src="" alt="" />
+              <i class="fa fa-quote-left"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="post-review-btn">
+    <button
+      mat-stroked-button
+      id="review-btn"
+      type="button"
+      (click)="reviewForm.show()">
+      מה דעתך עלינו?
+    </button>
+  </div>
+</section>
+<!-- End off Clients reviews section -->
+
+
+<!--Review modal-->
+<div mdbModal #reviewForm="mdbModal" class="modal fade right" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 id="title" class="modal-title w-100 font-weight-bold">מה אתם חושבים עלינו?</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="reviewForm.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div *ngIf="success" class="alert alert-success" role="alert">
+        <strong>הביקורת שלך התקבלה בהצלחה!</strong>
+      </div>
+      <div *ngIf="failed" class="alert alert-danger" role="alert">
+        <strong>אירעה תקלה בשליחת הביקורת. אנא נסה שוב.</strong>
+      </div>
+
+      <form [formGroup]="form" (submit)="onSubmit()" class="modal-body mx-3">
+        <mat-form-field class="md-form mb-5">
+          <input
+            matInput
+            class="form-control"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="שם מלא"
+            formControlName="name">
+          <label for="name"><i class="fa fa-user prefix grey-text"></i></label>
+        </mat-form-field>
+        <mat-form-field class="md-form mb-5">
+          <input
+            matInput
+            class="form-control"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="כתובת אימייל"
+            formControlName="email">
+          <label for="email"><i class="fa fa-envelope prefix grey-text"></i></label>
+        </mat-form-field>
+        <mat-form-field class="md-form mb-5">
+          <textarea
+            matInput
+            class="form-control"
+            type="text"
+            name="message"
+            id="message"
+            rows="6"
+            placeholder="כתוב עלינו"
+            formControlName="message"></textarea>
+          <label for="message"><i class="fa fa-pencil prefix grey-text"></i></label>
+        </mat-form-field>
+
+        <div class="modal-footer d-flex justify-content-center">
+          <button
+            mdbBtn
+            color="unique"
+            class="waves-light"
+            mdbWavesEffect>שלח
+            <i class="fa fa-paper-plane-o ml-1"></i>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
 </div>
+<!--End of review modal-->
+<hr class="mb-5 container">

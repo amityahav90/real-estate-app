@@ -1,0 +1,27 @@
+<div *ngIf="first" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
+  <mat-card
+    *ngFor="let asset of first"
+    class="card-picture"
+    (click)="onImageClicked(asset._id)">
+    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+      <span fxFlex="80%"> {{ asset.address }} </span>
+    </mat-card-title>
+    <img mat-card-image [src]="asset.photos[0]">
+  </mat-card>
+</div>
+
+<div class="spacer"></div>
+
+<div *ngIf="second" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
+  <mat-card
+    *ngFor="let asset of second"
+    class="card-picture"
+    (click)="onImageClicked(asset._id)">
+    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+      <span fxFlex="80%"> {{ asset.address }} </span>
+    </mat-card-title>
+    <img mat-card-image [src]="asset.photos[0]">
+  </mat-card>
+</div>
+
+

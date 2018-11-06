@@ -34,6 +34,9 @@ import { MessagesComponent } from './core/messages/messages.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import {ShortenPipe} from './core/pipes/shorten.pipe';
+import {SlideshowModule} from 'ng-simple-slideshow';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { GalleryComponent } from './core/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -57,10 +60,12 @@ import {ShortenPipe} from './core/pipes/shorten.pipe';
     MessagesComponent,
     FooterComponent,
     HomeComponent,
-    ShortenPipe
+    ShortenPipe,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
+    FlexLayoutModule,
     FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -69,6 +74,7 @@ import {ShortenPipe} from './core/pipes/shorten.pipe';
     ReactiveFormsModule,
     AngularFontAwesomeModule,
     HttpClientModule,
+    SlideshowModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDTeyQ24rK9mGlPyUL0tU-C97l_nyVysiw'
     }),

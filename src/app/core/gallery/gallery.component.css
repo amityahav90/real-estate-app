@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&subset=hebrew');
+
+mat-card {
+  max-width: 350px;
+  padding-bottom: 0;
+}
+.card-picture:hover {
+  background-color: #00a885;
+  color:#fff;
+  cursor: pointer;
+}
+mat-card-title {
+  font-family: 'Varela Round', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+.spacer {
+  margin: 1.5%;
+}
+img {
+  width: 350px;
+  height: 280px;
+}

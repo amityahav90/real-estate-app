@@ -1,3 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&subset=hebrew');
+
 body {
   height: 100vh;
 }
+
+#slide-show {
+  background-size: cover;
+  position: relative;
+  width: 100%;
+}
+
+.post-review-btn {
+  text-align: center;
+}
+#review-btn {
+  background-color: #00A885;
+  color: white;
+  direction: rtl;
+  border: none;
+  margin-top: 2rem;
+  font-family: 'Varela Round', sans-serif !important;
+}
+#review-btn:hover {
+  background-color: white !important;
+  color: #00A885 !important;
+}
+
+mat-form-field,
+textarea {
+  width: 100%;
+  text-align: right;
+  direction: rtl;
+}
+.md-form input[type=text], .md-form input[type=email] {
+  border-bottom: none;
+}
+.md-form input[type=text]:focus:not([readonly]) {
+  border-bottom: none;
+  box-shadow: none;
+}
+.md-form input[type=email]:focus:not([readonly]) {
+  border-bottom: none;
+  box-shadow: none;
+}
+label {
+  direction: ltr;
+}
+#title {
+  direction: rtl;
+  text-align: center;
+}
+
+.alert {
+  direction: rtl;
+  text-align: right;
+}
+
+/*Test Section
+======================*/
+#test {
+  direction: rtl;
+  text-align: right;
+}
+.main_test{
+  width: 100%;
+  display: contents;
+}
+.test_item{
+  padding: 40px;
+  transition: all 0.6s;
+  /*border:1px solid transparent;*/
+}
+.test_item:hover{
+  background-color: #fff;
+}
+.test_item:hover .item_img i{
+  color:#fff;
+  background-color: #00a885;
+}
+
+.main_test .item_img{
+  float: left;
+  display: inline-block;
+  width:20%;
+  margin-right: 10%;
+}
+.main_test .item_text{
+  display: inline-block;
+  width:70%;
+}
+.item_img{
+  position: relative;
+}
+.item_img i{
+  background-color: #fff;
+  position: absolute;
+  right: -25%;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #ddd;
+  border-radius: 50%;
+  box-shadow: 1px 0px 0px 0px #ddd;
+}
+.roomy-60 {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.roomy-40 {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.fix{
+  overflow: hidden;
+}
+.head_title{
+  padding-bottom: 2.143rem;
+  overflow: hidden;
+}
+.bg-grey{background-color: #f5f5f5;}
+
+.why-label, .clients-review, .new-assets {
+  font-family: 'Varela Round', sans-serif !important;
+  direction: rtl;
+  text-align: center;
+}
+
+
