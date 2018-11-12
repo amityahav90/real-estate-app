@@ -1,18 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&subset=hebrew');
+
+mat-card:hover {
+  /*background-color: #f5f5f5;*/
+  /*cursor: pointer;*/
+  background-color: #00a885;
+  color:#fff;
+}
+
+mat-card-title {
+  display: block !important;
+  font-family: 'Varela Round', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
 .example-card {
-  width: 250px;
+  max-width: 250px;
   margin-right: 1rem;
   margin-left: 1rem;
   margin-bottom: 2rem;
   text-align: right;
-  /*width: 40%;*/
-  /*height: 95%;*/
-  /*box-sizing: border-box;*/
+  padding-bottom: 0;
 }
 
-/*mat-card-content {*/
-  /*position: absolute;*/
-  /*min-height: 100% !important;*/
-/*}*/
+mat-card-title {
+  font-family: 'Varela Round', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+img {
+  width: 250px;
+  height: 200px;
+}
 
 .more-details-btn {
   text-align: center;

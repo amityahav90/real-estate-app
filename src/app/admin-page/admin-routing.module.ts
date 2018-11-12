@@ -6,6 +6,7 @@ import {AssetsTableComponent} from '../core/assets-table/assets-table.component'
 import {CreateAssetComponent} from '../assets/create-asset/create-asset.component';
 import {UsersComponent} from '../users/users.component';
 import {MessagesComponent} from '../core/messages/messages.component';
+import {ReviewsComponent} from '../core/reviews/reviews.component';
 
 const adminRoutes: Routes = [
   { path: 'admin', component: AdminPageComponent, children: [
@@ -14,7 +15,8 @@ const adminRoutes: Routes = [
       { path: 'assets/create', component: CreateAssetComponent },
       { path: 'assets/:type', component: AssetsTableComponent, runGuardsAndResolvers: 'paramsChange' },
       { path: 'users', component: UsersComponent },
-      { path: 'messages', component: MessagesComponent }
+      { path: 'messages', component: MessagesComponent },
+      { path: 'reviews', component: ReviewsComponent }
     ] }
 ];
 

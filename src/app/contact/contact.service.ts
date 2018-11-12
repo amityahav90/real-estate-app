@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {FormGroup} from '@angular/forms';
 import {Message} from './message.model';
 import {Subject} from 'rxjs';
+import {Review} from '../core/reviews/review.model';
 
 const BACKEND_URL = environment.apiUrl + '/contact';
 
@@ -12,12 +13,18 @@ const BACKEND_URL = environment.apiUrl + '/contact';
 })
 export class ContactService {
   messages: Message[] = [];
+  reviews: Review[] = [];
   private messagesUpdate = new Subject<Message[]>();
+  private reviewsUpdate = new Subject<Review[]>();
 
   constructor(private http: HttpClient) {}
 
   getMessagesUpdateListener() {
     return this.messagesUpdate.asObservable();
+  }
+
+  getReviewsUpdateListener() {
+    return this.reviewsUpdate.asObservable();
   }
 
   createMessage(contactForm: FormGroup) {
@@ -64,11 +71,33 @@ export class ContactService {
       });
   }
 
-  createReview(name: string, email: string, message: string) {
+  getAllReviews() {
+    this.http.get<{message: string, reviews: Review[]}>(BACKEND_URL + '/review')
+      .subscribe(res => {
+        this.reviews = res.reviews;
+        this.reviewsUpdate.next([...this.reviews]);
+      });
+  }
+
+  deleteReview(reviewId: string) {
+    this.http.delete<{message: string}>(BACKEND_URL + '/review/' + reviewId)
+      .subscribe(result => {
+        if (result.message === 'success') {
+          const index = this.reviews.findIndex(x => x._id === reviewId);
+          if (index > -1) {
+            this.reviews.splice(index, 1);
+            this.reviewsUpdate.next([...this.reviews]);
+          }
+        }
+      });
+  }
+
+  createReview(name: string, email: string, message: string, rating: number) {
     const reviewData = {
       name: name,
       email: email,
-      message: message
+      message: message,
+      rating: rating
     };
     return this.http.post<{message: string}>(BACKEND_URL + '/review', reviewData);
   }

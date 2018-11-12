@@ -37,6 +37,8 @@ import {ShortenPipe} from './core/pipes/shorten.pipe';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { GalleryComponent } from './core/gallery/gallery.component';
+import { ReviewsComponent } from './core/reviews/reviews.component';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -61,13 +63,15 @@ import { GalleryComponent } from './core/gallery/gallery.component';
     FooterComponent,
     HomeComponent,
     ShortenPipe,
-    GalleryComponent
+    GalleryComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,
     FlexLayoutModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgbRatingModule,
     AppRoutingModule,
     AdminRoutingModule,
     AngularMaterialModule,

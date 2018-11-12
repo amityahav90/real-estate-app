@@ -66,15 +66,15 @@
           </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6" *ngFor="let review of reviewsToShow">
           <div class="test_item fix">
             <div class="item_text">
-              <h5>Sarah Smith</h5>
-              <h6>envato.com</h6>
-
-              <p>Natus voluptatum enim quod necessitatibus quis
-                expedita harum provident eos obcaecati id culpa
-                corporis molestias.</p>
+              <h5>{{ review.name }}</h5>
+              <h6 class="item_text"><i>{{ review.date | date: 'mediumDate' }}</i></h6>
+              <div>
+                <ngb-rating [(rate)]="review.rating" [readonly]="true" [max]="5"></ngb-rating>
+              </div>
+              <p>{{ review.message }}</p>
             </div>
 
             <div class="item_img">
@@ -83,66 +83,12 @@
             </div>
           </div>
         </div>
-
-        <div class="col-md-6">
-          <div class="test_item fix">
-            <div class="item_text">
-              <h5>Sarah Smith</h5>
-              <h6>envato.com</h6>
-
-              <p>Natus voluptatum enim quod necessitatibus quis
-                expedita harum provident eos obcaecati id culpa
-                corporis molestias.</p>
-            </div>
-
-            <div class="item_img">
-              <img class="img-circle" src="" alt="" />
-              <i class="fa fa-quote-left"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="test_item fix">
-            <div class="item_text">
-              <h5>Sarah Smith</h5>
-              <h6>envato.com</h6>
-
-              <p>Natus voluptatum enim quod necessitatibus quis
-                expedita harum provident eos obcaecati id culpa
-                corporis molestias.</p>
-            </div>
-
-            <div class="item_img">
-              <img class="img-circle" src="" alt="" />
-              <i class="fa fa-quote-left"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="test_item fix">
-            <div class="item_text">
-              <h5>Sarah Smith</h5>
-              <h6>envato.com</h6>
-
-              <p>Natus voluptatum enim quod necessitatibus quis
-                expedita harum provident eos obcaecati id culpa
-                corporis molestias.</p>
-            </div>
-
-            <div class="item_img">
-              <img class="img-circle" src="" alt="" />
-              <i class="fa fa-quote-left"></i>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
   <div class="post-review-btn">
     <button
+      [disabled]="!form"
       mat-stroked-button
       id="review-btn"
       type="button"
@@ -155,7 +101,15 @@
 
 
 <!--Review modal-->
-<div mdbModal #reviewForm="mdbModal" class="modal fade right" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div
+  mdbModal
+  #reviewForm="mdbModal"
+  class="modal fade right"
+  id="frameModalTop"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
@@ -172,7 +126,7 @@
         <strong>אירעה תקלה בשליחת הביקורת. אנא נסה שוב.</strong>
       </div>
 
-      <form [formGroup]="form" (submit)="onSubmit()" class="modal-body mx-3">
+      <form [formGroup]="form" (submit)="onSubmit(formDirective)" #formDirective="ngForm" class="modal-body mx-3">
         <mat-form-field class="md-form mb-5">
           <input
             matInput
@@ -207,6 +161,11 @@
             formControlName="message"></textarea>
           <label for="message"><i class="fa fa-pencil prefix grey-text"></i></label>
         </mat-form-field>
+
+        <span class="rating">
+          <h5 class="rating-lbl">דרגו אותנו:</h5>
+          <ngb-rating class="rating-input" [(rate)]="userRating" [max]="5"></ngb-rating>
+        </span>
 
         <div class="modal-footer d-flex justify-content-center">
           <button

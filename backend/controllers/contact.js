@@ -108,7 +108,9 @@ exports.createReview = (req, res, next) => {
   const review = new Review({
     name: req.body.name,
     email: req.body.email,
-    message: req.body.message
+    date: Date.now(),
+    message: req.body.message,
+    rating: req.body.rating
   });
 
   review.save()
@@ -122,5 +124,41 @@ exports.createReview = (req, res, next) => {
     })
     .catch(error => {
       res.status(500).json({ error: error});
+    });
+}
+
+exports.getAllReviews = (req, res, next) => {
+  Review.find()
+    .then(reviews => {
+      if (reviews) {
+        res.status(200).json({
+          message: 'Fetched reviews successfully.',
+          reviews: reviews
+        });
+      } else {
+        res.status(401).json({
+          message: 'Fetched reviews failed.'
+        });
+      }
+    })
+    .catch(errror => {
+      res.status(500).json({
+        message: 'Unknown error occurred.',
+        error: error
+      });
+    });
+}
+
+exports.deleteReview = (req, res, next) => {
+  Review.findOneAndDelete({ _id: req.params.id })
+    .then(deletedReview => {
+      if (deletedReview) {
+        res.status(200).json({ message: 'success' });
+      } else {
+        res.status(401).json({ message: 'failed' });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ error: error });
     });
 }

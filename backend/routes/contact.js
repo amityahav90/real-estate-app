@@ -12,4 +12,8 @@ router.delete("/:id", ContactController.deleteMessage);
 
 router.post("/review", ContactController.createReview);
 
+router.get("/review", ContactController.getAllReviews);
+
+router.delete("/review/:id", ContactController.deleteReview);
+
 module.exports = router;

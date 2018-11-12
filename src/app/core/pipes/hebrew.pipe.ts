@@ -52,6 +52,9 @@ export class HebrewPipe implements PipeTransform {
       case 'asset':
         result = 'שם הנכס';
         break;
+      case 'date':
+        result = 'תאריך';
+        break;
       default:
         result = value;
     }
