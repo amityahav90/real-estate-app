@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Alef|Assistant&subset=hebrew');
 
+.container {
+  direction: rtl;
+}
+
 .header {
   margin-top: 2rem;
 }
@@ -14,21 +18,22 @@ h3 {
   text-shadow: 0.5px 0.5px 0.5px #aaa;
 }
 
-.right {
-  width: 70%;
-  margin-top: 1rem;
-}
+/*.right {*/
+  /*width: 70%;*/
+  /*margin-top: 1rem;*/
+/*}*/
 
-.left {
-  width: 30%;
-  display: flex;
-  margin-top: 3.3rem;
-}
+/*.left {*/
+  /*width: 30%;*/
+  /*display: flex;*/
+  /*margin-top: 3.3rem;*/
+/*}*/
 
 .carousel {
   width: 70%;
   height: 35%;
   margin-left: 14%;
+  display: contents;
 }
 
 section {
@@ -68,5 +73,13 @@ strong {
   margin-left: 0.25rem;
 }
 
+aside {
+  left: -3%;
+}
 
+@media only screen and (max-width: 800px) {
+  aside {
+    left: 0;
+  }
+}
 

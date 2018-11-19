@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Heebo&subset=hebrew');
 
+html {
+  position: relative;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
 a:hover,
 a:focus,
 a:visited,
@@ -7,11 +24,6 @@ a:active {
   text-decoration: none;
 }
 
-/*.content {*/
-  /*max-width: 1000px;*/
-  /*margin: 0 auto;*/
-  /*padding: 20px 20px;*/
-/*}*/
 .content p,
 h1 {
   font-family: 'Open Sans', sans-serif;
@@ -75,7 +87,8 @@ nav {
 }
 nav ul {
   list-style: none;
-  text-align: left;
+  text-align: right;
+  /*margin-top: -73px;*/
   margin: 0;
   padding: 0;
 }
@@ -125,13 +138,14 @@ nav ul li ul li a:hover {
   position: fixed;
   top: 0;
   left: 0;
-  background: #262626;
   height: 70px;
   width: 70px;
 }
 @media only screen and (max-width: 800px) {
   .nav-mobile {
     display: block;
+    /*position: relative;*/
+    /*top: -143px;*/
   }
   .logo {
     position: absolute;
@@ -142,6 +156,7 @@ nav ul li ul li a:hover {
   }
   nav ul {
     display: none;
+    margin-top: -73px;
   }
   nav ul li {
     width: 100%;

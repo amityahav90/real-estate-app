@@ -1,3 +1,9 @@
+<div class="header">
+  <h1 *ngIf="type === 'sale'">נכסים למכירה</h1>
+  <h1 *ngIf="type === 'rent'">נכסים להשכרה</h1>
+</div>
+
+
 <div class="container">
   <div class="row">
     <div class="column left">
@@ -12,26 +18,7 @@
   </div>
 </div>
 
-<!--<div class="container">-->
-  <!--<div class="row">-->
-    <!--<div class="column left">-->
-      <!--<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="flex-start">-->
-        <!--<mat-card-->
-          <!--*ngFor="let asset of filteredAssets"-->
-          <!--class="card-picture"-->
-          <!--(click)="onImageClicked(asset._id)">-->
-          <!--<mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">-->
-            <!--<span fxFlex="80%"> {{ asset.address }} </span>-->
-          <!--</mat-card-title>-->
-          <!--<img mat-card-image [src]="asset.photos[0]">-->
-        <!--</mat-card>-->
-        <!--&lt;!&ndash;<li *ngFor="let x of filteredAssets | slice:0:3; let i = index">{{i}}</li>&ndash;&gt;-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<div class="column right">-->
-      <!--<app-filter (selection)="onSelection($event)"></app-filter>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
+
+
 
 

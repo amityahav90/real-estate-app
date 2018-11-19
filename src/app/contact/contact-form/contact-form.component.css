@@ -1,3 +1,12 @@
+body {
+  background-color: #f5f5f5;
+}
+
+mat-card {
+  margin: auto;
+  background-color: #f5f5f5;
+}
+
 input, textarea {
   direction: rtl;
 }

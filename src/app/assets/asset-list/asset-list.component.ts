@@ -3,7 +3,6 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Asset} from '../asset.model';
 import {AssetService} from '../asset.service';
 import {Subscription} from 'rxjs';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-asset-list',
@@ -15,6 +14,7 @@ export class AssetListComponent implements OnInit, OnDestroy {
   filteredAssets: Asset[] = [];
   assetsSubscription: Subscription;
   navigationSubscription: Subscription;
+  type: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,8 +32,8 @@ export class AssetListComponent implements OnInit, OnDestroy {
   }
 
   initialize() {
-    const type = this.route.snapshot.params['type'];
-    this.assetService.getAssetsByType(type);
+    this.type = this.route.snapshot.params['type'];
+    this.assetService.getAssetsByType(this.type);
     this.assetsSubscription = this.assetService.getAssetsUpdatedListener()
       .subscribe((assets: Asset[]) => {
         this.assets = assets;

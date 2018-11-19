@@ -1,6 +1,12 @@
-/*.row {*/
-  /*margin: 1rem;*/
-/*}*/
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&subset=hebrew');
+
+.header {
+  font-family: 'Varela Round', sans-serif !important;
+  text-align: center;
+  direction: rtl;
+  margin-bottom: 3rem;
+}
+
 .container {
   height: 100vh;
 }
