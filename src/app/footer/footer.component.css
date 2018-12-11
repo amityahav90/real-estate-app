@@ -1,1 +1,12 @@
+footer {
+  background-color: #4D4D4D !important;
+  margin-top: 3rem;
 
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+a {
+  color: white !important;
+}

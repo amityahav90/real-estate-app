@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round&subset=hebrew');
 
 mat-card:hover {
-  /*background-color: #f5f5f5;*/
-  /*cursor: pointer;*/
   background-color: #00a885;
   color:#fff;
 }

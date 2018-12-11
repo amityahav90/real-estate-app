@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Varela+Round&subset=hebrew');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&amp;subset=hebrew');
 
 .header {
   font-family: 'Varela Round', sans-serif !important;
+  font-size: 2.95em !important;
   text-align: center;
   direction: rtl;
-  margin-bottom: 3rem;
 }
 
 .container {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .column {
@@ -28,7 +28,42 @@
   width: 20%;
 }
 
-mat-grid-tile {
-  background: lightblue;
+mat-form-field, mat-select, mat-option {
+  direction: rtl;
+  text-align: right;
 }
 
+.spacer {
+  margin-right: 1rem !important;
+}
+
+.btn-panel {
+  display: block;
+  /*margin-right: 2rem;*/
+}
+
+button {
+  width: 45px;
+  height: 25px;
+  text-align: center;
+  padding: inherit;
+}
+
+#clear-btn {
+  background-color: #519AE3;
+}
+
+#filter-btn {
+  background-color: #00A885;
+}
+
+.content {
+  display: inline-block;
+}
+
+.hr-mini {
+  max-width: 50px;
+  border-color: #519AE3;
+  border-width: 3px;
+  margin-bottom: 3rem;
+}

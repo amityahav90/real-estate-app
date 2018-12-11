@@ -2,23 +2,55 @@
   <h1 *ngIf="type === 'sale'">נכסים למכירה</h1>
   <h1 *ngIf="type === 'rent'">נכסים להשכרה</h1>
 </div>
+<hr class="hr-mini">
 
+<section id="filter" class="text-center fix" style="margin-bottom: 4rem;">
+  <mat-form-field>
+    <mat-select placeholder="מספר חדרים" [formControl]="rooms" multiple>
+      <mat-option
+        *ngFor="let room of roomsList"
+        [value]="room"
+        >
+        <span class="spacer"></span>{{ room.showValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<div class="container">
-  <div class="row">
-    <div class="column left">
-      <app-asset-item
-        *ngFor="let asset of filteredAssets"
-        [asset]="asset">
-      </app-asset-item>
-    </div>
-    <div class="column right">
-      <app-filter (selection)="onSelection($event)"></app-filter>
-    </div>
+  <span class="spacer"></span>
+
+  <mat-form-field>
+    <mat-select placeholder="שכונה" [formControl]="neighborhood" multiple>
+      <mat-option
+        *ngFor="let n of neighborhoodList"
+        [value]="n"
+        >
+        <span class="spacer"></span>{{ n.showValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="btn-panel">
+    <button id="clear-btn" class="btn" type="button" (click)="onClickClear()"><span class="content">נקה</span></button>
+    <button id="filter-btn" class="btn" type="button" (click)="onClickFilter()"><span class="content">סנן</span></button>
   </div>
-</div>
+</section>
 
 
-
-
+<section id="gallery" class="text-center fix">
+  <div class="container">
+    <div fxLayout="row wrap" fxLayout.xs="column wrap">
+      <div
+        [fxFlex.xs]="'100%'"
+        [fxFlex.sm]="'50%'"
+        [fxFlex.md]="regularDistribution"
+        [fxFlex.lg]="'25%'"
+        *ngFor="let asset of filteredAssets">
+        <app-asset-item [asset]="asset"></app-asset-item>
+      </div>
+    </div>
+      <!--<div class="column right">-->
+        <!--<app-filter (selection)="onSelection($event)"></app-filter>-->
+      <!--</div>-->
+  </div>
+</section>
 

@@ -32,15 +32,27 @@
         <mat-error *ngIf="form.get('address').invalid">יש לציין את כתובת הנכס.</mat-error>
       </mat-form-field>
 
+      <!--<mat-form-field>-->
+        <!--<input-->
+          <!--dir="rtl"-->
+          <!--matInput-->
+          <!--type="text"-->
+          <!--name="neighborhood"-->
+          <!--placeholder="שכונה"-->
+          <!--formControlName="neighborhood">-->
+        <!--<mat-error *ngIf="form.get('neighborhood').invalid">יש לציין את שם השכונה.</mat-error>-->
+      <!--</mat-form-field>-->
+
       <mat-form-field>
-        <input
-          dir="rtl"
-          matInput
-          type="text"
-          name="neighborhood"
+        <mat-select
           placeholder="שכונה"
+          dir="rtl"
+          name="neighborhood"
           formControlName="neighborhood">
-        <mat-error *ngIf="form.get('neighborhood').invalid">יש לציין את שם השכונה.</mat-error>
+          <mat-option *ngFor="let neighborhood of neighborhoodList" [value]="neighborhood.showValue">
+            {{ neighborhood.showValue }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field>

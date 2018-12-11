@@ -1,10 +1,19 @@
-body {
-  font-family: 'Alef', 'Arial', sans-serif;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 004);
-}
 
 h1 {
+  font-family: 'Varela Round', sans-serif !important;
+  font-size: 2.95em;
   text-align: center;
+  direction: rtl;
+}
+
+.hr-mini {
+  max-width: 50px;
+  border-color: #519AE3;
+  border-width: 3px;
+}
+
+body {
+  font-family: 'Varela Round', sans-serif !important;
 }
 
 .column {
@@ -38,8 +47,7 @@ span {
 
 #map {
   display: block;
-  margin-bottom: 60px;
-  margin-right: 500px;
+  margin: auto;
 }
 
 #col1 {
@@ -48,15 +56,62 @@ span {
   padding-right: 250px;
 }
 
-agm-map {
-  height: 500px;
-  /*width: 1300px;*/
+section {
+  width: 100%;
 }
 
-#information, #openingHours {
-  text-align: right;
+.col-details {
+  display: inline-block;
 }
 
+.col-contact-form {
+  display: inline-block;
+}
 
+#details {
+  margin: auto;
+  line-height: 100px;
+}
 
+#right-col {
+  display: inline-block;
+  float: right;
+  width: 50%;
+}
+
+#left-col {
+  display: inline-block;
+  float: left;
+  width: 50%;
+}
+
+.li-detail {
+  margin-left: 2rem;
+}
+
+.li-first {
+  margin-top: 0.5rem;
+}
+
+.spacer {
+  margin-top: 5rem;
+}
+
+.mapouter {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+.gmap_canvas > *{
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
 

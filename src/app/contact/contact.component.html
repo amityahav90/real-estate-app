@@ -1,106 +1,80 @@
+<h1 id="contact-header">צור קשר</h1>
+<hr class="hr-mini">
+
+<span class="spacer"></span>
+
 <div class="container">
-  <h1>צור קשר</h1>
-  <hr>
-
   <div class="row">
-    <div id="col1" class="column">
-      <div class="container">
-        <ul id="information" class="list-unstyled">
-          <li>מרכז רזין, 115/2, אילת</li>
-          <li>טלפון: 08-6379989 <i class="fa fa-phone" aria-hidden="true"></i></li>
-          <li>פקס: 08-6379999 <i class="fa fa-fax" aria-hidden="true"></i></li>
-          <li> example@gmail.com :אימייל <i class="fa fa-envelope-o" aria-hidden="true"></i></li>
-        </ul>
-        <ul id="openingHours" class="list-unstyled">
-          <p>:שעות פתיחה <i class="fa fa-clock-o" aria-hidden="true"></i></p>
-          <li>ראשון-חמישי: 09:00-19:00</li>
-          <li>שישי: 09:00-12:30</li>
-          <li>שבת: סגור</li>
-        </ul>
+    <section id="details-section">
+      <div class="col-details col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div id="details" class="text-center">
+          <ul id="left-col" class="list-unstyled column">
+
+            <li>
+              <i class="fa fa-map-marker fa-2x mt-4 blue-text"></i>
+              <ul class="list-unstyled li-first" style="direction: rtl; line-height: 1.5rem;">
+                <li class="li-detail"><b>מרכז רכטר 9, אילת</b></li>
+              </ul>
+            </li>
+
+            <li>
+              <i class="fa fa-phone fa-2x mt-4 blue-text"></i>
+              <ul class="list-unstyled" style="direction: rtl; line-height: 1.5rem;">
+                <li class="li-detail li-first"><b>1-800-277677</b></li>
+                <li class="li-detail"><b>053-7788978</b></li>
+              </ul>
+            </li>
+
+            <li>
+              <i class="fa fa-envelope fa-2x mt-4 blue-text"></i>
+              <ul class="list-unstyled li-first" style="direction: rtl; line-height: 1.5rem;">
+                <li class="li-detail li-first">
+                  <a href="mailto:nachi280465@gmail.com"><b>אימייל</b></a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+
+          <ul id="right-col" class="list-unstyled column">
+
+            <li>
+              <i class="fa fa-facebook fa-2x mt-4 blue-text"></i>
+              <ul class="list-unstyled" style="direction: rtl; line-height: 1.5rem;">
+                <li class="li-detail li-first">
+                  <a href="https://www.facebook.com/thadarom/"><b>תיווך הדרום</b></a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <i class="fa fa-clock-o fa-2x mt-4 blue-text"></i>
+              <ul class="list-unstyled" style="direction: rtl; line-height: 1.5rem;">
+                <li class="li-detail li-first"><b>ראשון - חמישי:</b></li>
+                <li class="li-detail">08:00 - 13:00</li>
+                <li class="li-detail">16:00 - 19:00</li>
+                <li class="li-detail"><b>שישי:</b></li>
+                <li class="li-detail">08:00 - 13:00</li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
       </div>
-    </div>
+      <div class="col-contact-form col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <app-contact-form></app-contact-form>
+      </div>
+      <span class="spacer"></span>
+    </section>
 
-    <div class="column">
-      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="name">שם</label>
-          <input
-            type="text"
-            id="name"
-            formControlName="name"
-            class="form-control">
-          <span
-            *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched"
-            class="help-block">
-            חובה למלא שדה זה
-          </span>
-        </div>
-        <div class="form-group">
-          <label for="phone">טלפון</label>
-          <input
-            type="text"
-            id="phone"
-            formControlName="phone"
-            class="form-control">
-          <span
-            *ngIf="!contactForm.get('phone').valid && contactForm.get('phone').touched"
-            class="help-block">
-            חובה למלא שדה זה
-          </span>
-        </div>
-        <div class="form-group">
-          <label for="email">כתובת אימייל</label>
-          <input
-            type="text"
-            id="email"
-            formControlName="email"
-            class="form-control">
-          <span
-            *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched"
-            class="help-block">
-            כתובת האימייל אינה חוקית
-          </span>
-        </div>
-        <div class="form-group">
-          <label for="message">הודעה</label>
-          <textarea
-            name="message"
-            id="message"
-            rows="6"
-            formControlName="message"
-            class="form-control">
-          </textarea>
-          <span
-            *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched"
-            class="help-block">
-            חובה למלא שדה זה
-          </span>
-        </div>
-        <div class="btnSubmit">
-          <button
-            type="submit"
-            class="btn btn-primary"
-            [disabled]="!contactForm.valid">
-            צור קשר
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
+    <hr class="mb-5 container">
 
-  <hr>
-
-  <div id="map" class="container">
-    <agm-map
-      [latitude]="latitude"
-      [longitude]="longtitude"
-      (mapClick)="onChosedLocation($event)">
-      <agm-marker
-        [latitude]="latitude"
-        [longitude]="longtitude"
-        *ngIf="locationChosen">
-      </agm-marker>
-    </agm-map>
+    <section id="map-section">
+      <div class="mapouter">
+        <div class="gmap_canvas">
+          <iframe width="900" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=%D7%AA%D7%99%D7%95%D7%95%D7%9A%20%D7%94%D7%93%D7%A8%D7%95%D7%9D%20%D7%90%D7%99%D7%9C%D7%AA&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        </div>
+      </div>
+    </section>
   </div>
 </div>
-

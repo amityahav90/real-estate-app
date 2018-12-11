@@ -24,6 +24,31 @@ export class CreateAssetComponent implements OnInit {
     { value: 'rent', showValue: 'להשכרה' }
   ];
   categories: string[] = ['דירה', 'פנטהאוז', 'קוטג\'', 'וילה', 'יחידת דיור', 'דירת גן', 'דופלקס'];
+  neighborhoodList: {value: string, showValue: string}[] = [
+    { value: 'ofir', showValue: 'אופיר' },
+    { value: 'urim', showValue: 'אורים' },
+    { value: 'amdar', showValue: 'אמדר' },
+    { value: 'bne-beitcha', showValue: 'בנה ביתך' },
+    { value: 'ganim-a', showValue: 'גנים א' },
+    { value: 'ganim-b', showValue: 'גנים ב' },
+    { value: 'haeshel', showValue: 'האשל' },
+    { value: 'hadekel', showValue: 'הדקל' },
+    { value: 'yeelim', showValue: 'יעלים' },
+    { value: 'mitspe-yam', showValue: 'מצפה ים' },
+    { value: 'neve-midbar', showValue: 'נווה מדבר' },
+    { value: 'arava', showValue: 'ערבה' },
+    { value: 'zeelim', showValue: 'צאלים' },
+    { value: 'tsofit', showValue: 'צופית' },
+    { value: 'rova4', showValue: 'רובע 4' },
+    { value: 'rova5', showValue: 'רובע 5' },
+    { value: 'rova6', showValue: 'רובע 6' },
+    { value: 'rova7', showValue: 'רובע 7' },
+    { value: 'rova8', showValue: 'רובע 8' },
+    { value: 'rova9', showValue: 'רובע 9' },
+    { value: 'rova10', showValue: 'רובע 10' },
+    { value: 'rova11', showValue: 'רובע 11' },
+    { value: 'shahamon', showValue: 'שחמון' }
+  ];
   form: FormGroup;
   isAuthenticated = false;
   imagePreview: File[] = [null, null, null, null, null];
